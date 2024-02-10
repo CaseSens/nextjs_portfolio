@@ -11,9 +11,16 @@ const config: Config = {
       colors: {
         darkblue: "#01223b",
         hotpink: "#c62368",
+        lightgreen: "#6CF199",
       },
       fontFamily: {
         rubik: ["var(--font-rubik)"],
+      },
+      gridTemplateColumns: {
+        "widget-img-grid-col": "1fr, 1fr",
+      },
+      gridTemplateRows: {
+        "widget-img-grid-row": "1fr, 1fr",
       },
     },
   },

@@ -7,12 +7,24 @@ const inter = Inter({ subsets: ["latin"] });
 const rubik = localFont({
   src: [
     {
+      path: "../../public/fonts/Rubik/static/Rubik-Light.ttf",
+      weight: "300",
+    },
+    {
       path: "../../public/fonts/Rubik/static/Rubik-Regular.ttf",
       weight: "400",
     },
     {
       path: "../../public/fonts/Rubik/static/Rubik-Bold.ttf",
       weight: "700",
+    },
+    {
+      path: "../../public/fonts/Rubik/static/Rubik-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/Rubik/static/Rubik-ExtraBold.ttf",
+      weight: "800",
     },
   ],
   variable: "--font-rubik",

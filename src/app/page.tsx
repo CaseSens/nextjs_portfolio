@@ -1,9 +1,14 @@
 import About from "./about";
+import Header from "./components/Header";
 import Home from "./home";
 
 export default function Main() {
   return (
-    <main id="main" className="h-full w-full min-h-full flex flex-col shrink-0 grow-0 hide-scrollbar">
+    <main
+      id="main"
+      className="relative h-full w-full flex flex-col hide-scrollbar"
+    >
+      {/* <Header /> */}
       <Home />
       <About />
     </main>

@@ -6,7 +6,9 @@ import IntroButton from "./components/IntroButton";
 export default function Home() {
   const { scrollToElement } = useViewportHooks();
   const handleAboutClick = () => {
-    scrollToElement("about-page");
+    scrollToElement("introduction-container", {
+      at: "top",
+    });
   };
 
   return (
@@ -17,28 +19,28 @@ export default function Home() {
         alt="Background"
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="box-border flex flex-col items-center w-9/12 h-3/5 bg-transparent p-6 rounded-lg backdrop-filter backdrop-blur-sm shadow-2xl px-4 sm:px-8 md:px-12 py-4">
-          <h2 className="text-sm underline">My portfolio</h2>
-          <div className="flex flex-col items-center grow justify-center">
-            <h1 className="transition-all text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-6xl 2xl:text-7xl text-nowrap mt-6 tracking-wide drop-shadow-md">
+        <div className="box-border flex flex-col gap-12 items-center w-9/12 xl:h-3/5 bg-white/[.1] px-6 py-8 md:py-12 rounded-lg backdrop-filter backdrop-blur-sm shadow-2xl px-4 sm:px-8 md:px-12 py-4">
+          <div className="flex flex-col leading-tight md:leading-none">
+            <h1 className="clamp-width-full font-extrabold drop-shadow-xl">
               CASEY GOOSNEY
             </h1>
-            <div className="flex flex-row w-4/5 items-center justify-between mt-1 mb-6 md:mb-12 text-sm sm:text-md md:text-xl lg:text-2xl xl:text-4xl">
-              <h2 className="transition-all hover:scale-105 drop-shadow-md select-none">
-                DEVELOPER
-              </h2>
-              <h2 className="transition-all hover:scale-105 drop-shadow-md select-none">
-                ARTIST
-              </h2>
+            <div className="flex w-full h-fit">
+              <div className="flex flex-col clamp-width-small-bp items-start justify-center text-lightgreen grow leading-tight">
+                <p className="font-light">Developer</p>
+                <p className="font-light">Artist</p>
+              </div>
+              <h1 className="clamp-width-full font-extrabold drop-shadow-xl">
+                GAREAU
+              </h1>
             </div>
-            <p className="font-inter text-pretty text-sm md:text-md xl:text-lg 2xl:text-xl max-w-56 md:max-w-64 xl:max-w-70 2xl:max-w-80 pointer-events-none mt-2">
-              Read more about who I am below, or skip ahead to see my projects
-            </p>
-            <div className="flex flex-col items-center justify-center gap-4 sm:flex-row w-full h-fit mt-8 ">
-              <IntroButton text="ABOUT ME" onClick={handleAboutClick} />
-              <IntroButton text="VIEW PROJECTS" onClick={() => {}} />
+            <div className="flex items-center justify-end gap-4 md:gap-6 w-full mt-8 mb-8">
+              <IntroButton text="About me" onClick={handleAboutClick} />
+              <IntroButton text="View Projects" onClick={handleAboutClick} />
             </div>
           </div>
+          <p className="font-light text-left clamp-width-small">
+            Read more about who I am below, or skip ahead to see my projects
+          </p>
         </div>
       </div>
     </div>

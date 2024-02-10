@@ -13,7 +13,7 @@ const IntroButton: React.FC<IntroButtonProps> = ({ text, onClick }) => {
   return (
     <button
       onClick={handleClick}
-      className="border-2 px-3 py-1 xl:py-3 rounded-sm hover:shadow-lg"
+      className="border-2 px-2 py-1 clamp-width-dynamic-ps md:px-6 md:py-2 rounded-md font-light transition hover:shadow-lg hover:bg-slate-200/[.1]"
     >
       {text}
     </button>
