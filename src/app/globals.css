@@ -15,9 +15,9 @@ html {
 }
 
 .hide-scrollbar {
-  /*overflow: auto;
-  /*-ms-overflow-style: none; /* IE 11 */
-  /*scrollbar-width: 12px; /* Firefox 64 */
+  overflow: auto;
+  -ms-overflow-style: none; /* IE 11 */
+  scrollbar-width: 12px; /* Firefox 64 */
 }
 
 .clamp-width-full {

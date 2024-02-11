@@ -7,8 +7,12 @@ const AboutLayeredText: React.FC<AboutLayeredTextProps> = ({
   title,
   sections,
 }) => {
-  const sectionComponents = sections.map((section) => (
-    <SectionComponent title={section.title} children={section.children} />
+  const sectionComponents = sections.map((section, index) => (
+    <SectionComponent
+      key={index}
+      title={section.title}
+      children={section.children}
+    />
   ));
 
   return (
@@ -35,8 +39,11 @@ const SectionComponent: React.FC<AboutSection> = (sectionInfo) => {
       <h1 className="fade-left-right font-bold drop-shadow-xl clamp-width-large">
         {sectionInfo.title}
       </h1>
-      {sectionInfo.children.map((child) => (
-        <div className="fade-left-right flex flex-col clamp-width-medium">
+      {sectionInfo.children.map((child, index) => (
+        <div
+          key={index}
+          className="fade-left-right flex flex-col clamp-width-medium"
+        >
           {child}
         </div>
       ))}

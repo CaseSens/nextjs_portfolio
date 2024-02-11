@@ -6,7 +6,7 @@ import IntroButton from "./components/IntroButton";
 export default function Home() {
   const { scrollToElement } = useViewportHooks();
   const handleAboutClick = () => {
-    scrollToElement("introduction-container", {
+    scrollToElement("about-page", {
       at: "top",
     });
   };

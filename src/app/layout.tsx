@@ -42,9 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} ${rubik.variable} font-sans hide-scrollbar`}
-      >
+      <body className={`${inter.className} ${rubik.variable} font-sans`}>
         {children}
       </body>
     </html>

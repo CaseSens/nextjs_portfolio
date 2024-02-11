@@ -6,7 +6,7 @@ export default function Main() {
   return (
     <main
       id="main"
-      className="relative h-full w-full flex flex-col hide-scrollbar"
+      className="relative h-full w-full flex flex-col"
     >
       {/* <Header /> */}
       <Home />

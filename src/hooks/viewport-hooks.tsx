@@ -2,8 +2,7 @@ import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollToPlugin);
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 type atParams = "top" | "bottom" | "left" | "right" | "center";
 
@@ -23,7 +22,7 @@ export const useViewportHooks = () => {
       const elemRect = element.getBoundingClientRect();
       let scrollToPos: number = getScrollToPos(elemRect, params.at);
 
-      gsap.to(body, {
+      gsap.to(window, {
         duration: 1.5,
         scrollTo: {
           y: scrollToPos,
@@ -41,11 +40,7 @@ export const useViewportHooks = () => {
     toVars: gsap.TweenVars
   ) => {
     gsap.set(targets, fromVars);
-    gsap.fromTo(
-      targets,
-      fromVars,
-      toVars,
-    );
+    gsap.fromTo(targets, fromVars, toVars);
   };
 
   return { scrollToElement, animateOnScroll };

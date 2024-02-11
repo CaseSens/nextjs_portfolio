@@ -42,7 +42,7 @@ function About() {
     animateOnScroll(
       ".fade-left-right",
       {
-        x: -600,
+        x: -2000,
         opacity: 0,
         visibility: "hidden",
       },
@@ -56,11 +56,10 @@ function About() {
           start: "top center",
           end: "bottom center",
           // scrub: true,
-          markers: true,
           toggleActions: "play reverse play reverse",
           invalidateOnRefresh: true,
         },
-        ease: "power2.inOut",
+        ease: "power1.out",
       }
     );
   }, []);
