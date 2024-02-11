@@ -1,6 +1,6 @@
 function DevInfoSummary() {
   return (
-    <div className="grow flex rounded-lg bg-white/[.1] p-4 mt-96">
+    <div className="col-start-2 grow flex rounded-lg bg-white/[.1] p-4">
       <p>
         Hi, I'm Casey! I'm a 24 year old software developer with a passion for
         programming.

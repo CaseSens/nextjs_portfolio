@@ -6,8 +6,8 @@ import IntroButton from "./components/IntroButton";
 export default function Home() {
   const { scrollToElement } = useViewportHooks();
   const handleAboutClick = () => {
-    scrollToElement("about-page", {
-      at: "top",
+    scrollToElement("introduction-container", {
+      at: "center",
     });
   };
 
@@ -19,7 +19,7 @@ export default function Home() {
         alt="Background"
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="box-border flex flex-col gap-12 items-center w-9/12 xl:h-3/5 bg-white/[.1] px-6 py-8 md:py-12 rounded-lg backdrop-filter backdrop-blur-sm shadow-2xl px-4 sm:px-8 md:px-12 py-4">
+        <div className="box-border flex flex-col gap-12 items-center w-9/12 bg-white/[.1] px-6 py-8 md:py-12 rounded-lg backdrop-filter backdrop-blur-sm shadow-2xl px-4 sm:px-8 md:px-12 py-4">
           <div className="flex flex-col leading-tight md:leading-none">
             <h1 className="clamp-width-full font-extrabold drop-shadow-xl">
               CASEY GOOSNEY

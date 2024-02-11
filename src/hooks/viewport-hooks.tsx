@@ -14,19 +14,20 @@ type scrollToElementParams = {
 export const useViewportHooks = () => {
   const scrollToElement = (
     id: string,
-    { ...params }: scrollToElementParams
+    { at, offset = 0 }: scrollToElementParams
   ) => {
-    const body = document.getElementById("main");
     const element = document.getElementById(id);
     if (element) {
       const elemRect = element.getBoundingClientRect();
-      let scrollToPos: number = getScrollToPos(elemRect, params.at);
+      let scrollToPos: number = getScrollToPos(elemRect, at);
+
+      // Apply any additional offset if provided
+      scrollToPos += offset;
 
       gsap.to(window, {
         duration: 1.5,
         scrollTo: {
           y: scrollToPos,
-          offsetY: params.offset ?? 0,
           autoKill: true,
         },
         ease: "power1.inOut",
@@ -43,22 +44,31 @@ export const useViewportHooks = () => {
     gsap.fromTo(targets, fromVars, toVars);
   };
 
-  return { scrollToElement, animateOnScroll };
+  return { scrollToElement, animateOnScroll, gsap };
 };
 
-function getScrollToPos(elemRect: DOMRect, at?: atParams): number {
-  if (!at) return elemRect.top;
-
+function getScrollToPos(elemRect: DOMRect, at: atParams = "top"): number {
+  const currentScroll = window.pageYOffset;
   switch (at) {
     case "bottom":
-      return elemRect.bottom;
+      // Element's bottom relative to the document - window's height
+      return currentScroll + elemRect.bottom - window.innerHeight;
     case "top":
-      return elemRect.top;
-    case "left":
-      return elemRect.left;
+      // Element's top relative to the document
+      return currentScroll + elemRect.top;
     case "center":
-      return elemRect.top + elemRect.height / 2;
+      // Element's center relative to the document - half window's height
+      return (
+        currentScroll +
+        elemRect.top +
+        elemRect.height / 2 -
+        window.innerHeight / 2
+      );
+    case "left": // Assuming horizontal scrolling is not intended
+      return currentScroll;
+    case "right": // Assuming horizontal scrolling is not intended
+      return currentScroll;
     default:
-      return elemRect.top;
+      return currentScroll + elemRect.top;
   }
 }

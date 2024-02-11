@@ -18,6 +18,8 @@ const config: Config = {
       },
       gridTemplateColumns: {
         "widget-img-grid-col": "1fr, 1fr",
+        "page-padding-cols-sm": "0.1fr 1fr 0.1fr",
+        "page-padding-cols-xl": "0.25fr 1fr 0.25fr",
       },
       gridTemplateRows: {
         "widget-img-grid-row": "1fr, 1fr",
