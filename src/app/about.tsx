@@ -2,32 +2,15 @@
 
 import { useViewportHooks } from "@/hooks/viewport-hooks";
 import { IoIosArrowDown } from "react-icons/io";
-import DevInfoSummary from "./components/DevInfoSummary";
-import { useEffect } from "react";
 import SkillsWidget from "./components/SkillsWidget";
+import Carousel, { Slide } from "./components/Carousel";
 
-// const devSections: AboutSection[] = [
-//   {
-//     title: "Full Stack",
-//     children: ["Computer Applications", "Web Development"],
-//   },
-//   {
-//     title: "Front-end",
-//     children: ["HTML5", "CSS3", "Javascript", "Typescript", "Swing"],
-//   },
-//   {
-//     title: "Back-end",
-//     children: [
-//       "API building",
-//       "Node.js",
-//       "Express.js",
-//       "Typescript",
-//       "MySQL",
-//       "NoSQL",
-//       "Spring",
-//     ],
-//   },
-// ];
+const devProjSlides: Slide[] = [
+  { imageUrl: "efc.jpg", title: "EFC - Electron File Converter" },
+  { imageUrl: "testimage.png", title: "PROJ2" },
+  { imageUrl: "testimage2.jpg", title: "PROJ3" },
+  { imageUrl: "testimage2.jpg", title: "PROJ4" },
+];
 
 function About() {
   const { scrollToElement, animateOnScroll, gsap } = useViewportHooks();
@@ -70,7 +53,7 @@ function About() {
           </div>
           <img
             src="/Casey.jpg"
-            className="object-cover h-full w-full place-self-center rounded-md"
+            className="object-cover w-full max-h-full place-self-center rounded-md"
           />
         </div>
         <IoIosArrowDown
@@ -80,14 +63,35 @@ function About() {
         />
       </div>
       <div id="devSkills" className="col-start-2 w-full flex flex-col gap-8">
-        <SkillsWidget containerId={"dev1Container"} widgetId={"dev1Widget"} />
-        <SkillsWidget containerId={"dev2Container"} widgetId={"dev2Widget"} />
+        <SkillsWidget
+          containerId={"dev1Container"}
+          widgetId={"dev1Widget"}
+          title="FULL-STACK"
+          childrenText={["Computer Applications", "Web Development"]}
+        />
+        <SkillsWidget
+          containerId={"dev2Container"}
+          widgetId={"dev2Widget"}
+          title="FRONT-END"
+          childrenText={["HTML5", "CSS3", "JavaScript", "TypeScript", "Swing"]}
+        />
+        <SkillsWidget
+          containerId={"dev3Container"}
+          widgetId={"dev3Widget"}
+          title="BACK-END"
+          childrenText={["API Building", "Node.js", "Express.js", "JEST"]}
+        />
+      </div>
+      <div className="col-start-2 w-full h-full grid grid-rows-[200px_400px] place-items-center border-2 rounded-lg">
+        <h1 className="text-white clamp-width-medium">
+          Overview of my projects
+        </h1>
+        <Carousel slides={devProjSlides} />
       </div>
       <div
         style={{ marginTop: "1000px" }}
         className="endTrig col-start-2 h-96 w-full bg-white"
       ></div>
-      {/* <DevInfoSummary /> */}
     </div>
   );
 }

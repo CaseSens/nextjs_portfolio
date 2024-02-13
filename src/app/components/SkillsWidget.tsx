@@ -4,13 +4,17 @@ import { useEffect } from "react";
 interface SkillsWidgetProps {
   containerId: string;
   widgetId: string;
+  title: string;
+  childrenText: string[];
 }
 
 const SkillsWidget: React.FC<SkillsWidgetProps> = ({
   containerId,
   widgetId,
+  title,
+  childrenText,
 }) => {
-  const { animateOnScroll, gsap } = useViewportHooks();
+  const { animateOnScroll } = useViewportHooks();
 
   useEffect(() => {
     animateOnScroll(
@@ -29,22 +33,38 @@ const SkillsWidget: React.FC<SkillsWidgetProps> = ({
           start: "top-=200 center",
           toggleActions: "reverse play reverse play",
           // fastScrollEnd: true,
-          end: () => document.querySelector(`#${containerId}`).offsetWidth,
-          markers: true,
+          end: () => {
+            const container = document.querySelector(
+              `#${containerId}`
+            ) as HTMLElement;
+
+            if (container) {
+              return container.offsetHeight;
+            } else {
+              return 100;
+            }
+          },
+          // markers: true,
         },
       }
     );
   }, []);
 
+  const childrenTextElements = childrenText.map((child) => <p>{child}</p>);
+
   return (
-    <div id={containerId} className=" w-full max-w-[100%] overflow-hidden">
+    <div
+      id={containerId}
+      className=" w-full max-w-[100%] overflow-hidden text-white"
+    >
       <div
         id={widgetId}
-        className="flex flex-col justify-center w-[101%] p-6 border-2 rounded-lg shadow-inner-lg"
+        className="flex flex-col gap-1 justify-center w-[101%] p-6 border-2 rounded-lg shadow-inner-lg"
       >
-        <h1 className="clamp-width-medium">FULL STACK</h1>
-        <p className="">Computer Applications</p>
-        <p>Web Development</p>
+        <h1 className="clamp-width-medium underline underline-offset-4">
+          {title}
+        </h1>
+        {childrenTextElements}
       </div>
     </div>
   );
