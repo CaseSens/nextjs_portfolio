@@ -59,22 +59,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <>
-      <Head>
-        <title>CaseyGG Portfolio</title>
-        <meta name="description" content="My Portfolio" />
-        <meta
-          name="viewport"
-          content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
-        />
-      </Head>
-      <html lang="en">
-        <body
-          className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
-        >
-          {children}
-        </body>
-      </html>
-    </>
+    <html lang="en">
+      <body
+        className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
+      >
+        {children}
+      </body>
+    </html>
   );
 }
