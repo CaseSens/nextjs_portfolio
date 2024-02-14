@@ -4,6 +4,7 @@ import { useViewportHooks } from "@/hooks/viewport-hooks";
 import { IoIosArrowDown } from "react-icons/io";
 import SkillsWidget from "./components/SkillsWidget";
 import Carousel, { Slide } from "./components/Carousel";
+import ImageGallery from "./components/ImageGallery";
 
 const devProjSlides: Slide[] = [
   { imageUrl: "efc.jpg", title: "EFC - Electron File Converter" },
@@ -44,11 +45,16 @@ function About() {
             <h1 className="clamp-width-large font-normal grow">
               Casey Goosney Gareau
             </h1>
-            <p className="clamp-width-xsmall text-balance">
-              Office ipsum you must be muted. Go to expectations hanging options
-              synchronise talk productize key goalposts your. Explore race
-              stakeholder do savvy pee cross goalposts procrastinating can. To
-              tentative loss shark community close.
+            <p className="clamp-width-xsmall text-balance my-2 max-h-[96px] md:max-h-full overflow-y-auto">
+              Hi, I'm a 24-year-old full-stack developer who lives and breathes
+              programming, music, and visual arts. Coding is more than just a
+              job for me—it's a passion that drives me to constantly work on
+              personal projects, whether that's building cool web apps or diving
+              into my creative side with music and art. I strive in tackling new
+              challenges and learning something new with each project I take on.
+              It's this mix of tech and creativity that always keeps me on my
+              toes and my days interesting. I'm looking forward to what I can
+              create next.
             </p>
           </div>
           <img
@@ -82,11 +88,8 @@ function About() {
           childrenText={["API Building", "Node.js", "Express.js", "JEST"]}
         />
       </div>
-      <div className="col-start-2 w-full h-full grid grid-rows-[200px_400px] place-items-center border-2 rounded-lg">
-        <h1 className="text-white clamp-width-medium">
-          Overview of my projects
-        </h1>
-        <Carousel slides={devProjSlides} />
+      <div className="col-start-2 w-full h-full">
+        <ImageGallery />
       </div>
       <div
         style={{ marginTop: "1000px" }}

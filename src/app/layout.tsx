@@ -29,6 +29,23 @@ const rubik = localFont({
   ],
   variable: "--font-rubik",
 });
+const playfair = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Playfair_Display/static/PlayfairDisplay-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/Playfair_Display/static/PlayfairDisplay-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/Playfair_Display/static/PlayfairDisplay-Bold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-playfair",
+});
 
 export const metadata: Metadata = {
   title: "CaseyGG Portfolio",
@@ -43,7 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${rubik.variable} font-sans overflow-x-hidden`}
+        className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
       >
         {children}
       </body>

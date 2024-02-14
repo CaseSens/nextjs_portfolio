@@ -15,11 +15,13 @@ const config: Config = {
       },
       fontFamily: {
         rubik: ["var(--font-rubik)"],
+        playfair: ["var(--font-playfair)"],
       },
       gridTemplateColumns: {
         "widget-img-grid-col": "1fr, 1fr",
         "page-padding-cols-sm": "0.1fr 1fr 0.1fr",
         "page-padding-cols-xl": "0.25fr 1fr 0.25fr",
+        "gallery-fr-5": "0.1fr 0.1fr 0.1fr 0.1fr 0.6fr"
       },
       gridTemplateRows: {
         "widget-img-grid-row": "1fr, 1fr",
