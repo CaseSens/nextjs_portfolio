@@ -12,13 +12,13 @@ export default function Home() {
   };
 
   return (
-    <div className="relative bg-darkblue h-full w-full flex items-center justify-center text-white font-rubik font-bold text-center shrink-0 select-none">
+    <div className="relative z-0 bg-transparent h-screen w-screen flex items-center justify-center text-white font-rubik font-bold text-center shrink-0 select-none">
       <img
         src="/waves-bg.svg"
         className="absolute inset-0 object-cover h-full w-full"
         alt="Background"
       />
-      <div className="absolute inset-0 flex items-center justify-center">
+      <div className="absolute z-30 inset-0 flex items-center justify-center">
         <div className="box-border flex flex-col gap-12 items-center w-9/12 bg-white/[.1] px-6 py-8 md:py-12 rounded-lg backdrop-filter backdrop-blur-sm shadow-2xl px-4 sm:px-8 md:px-12 py-4">
           <div className="flex flex-col leading-tight md:leading-none">
             <h1 className="clamp-width-full font-extrabold drop-shadow-xl">

@@ -6,9 +6,8 @@ import { FaInfoCircle } from "react-icons/fa";
 import TooltipButton from "./TooltipButton";
 
 const Header = () => {
-
   return (
-    <div className="header box-border fixed flex flex-col gap-2 justify-center justify-start w-full top-0 p-4 z-10 pointer-events-none">
+    <div className="header box-border fixed flex flex-col gap-2 justify-center justify-start w-full top-0 p-4 z-20 pointer-events-none">
       <TooltipButton Icon={GoHomeFill} tooltipText="Home" />
       <TooltipButton Icon={FaBoxArchive} tooltipText="Projects" />
       <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" />
