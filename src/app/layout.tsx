@@ -1,5 +1,5 @@
 import Head from "next/head";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
@@ -51,6 +51,15 @@ const playfair = localFont({
 export const metadata: Metadata = {
   title: "CaseyGG Portfolio",
   description: "My Portfolio",
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  height: "device-height",
+  initialScale: 1.0,
+  userScalable: false,
+  minimumScale: 1.0,
+  maximumScale: 1.0,
 };
 
 export default function RootLayout({
