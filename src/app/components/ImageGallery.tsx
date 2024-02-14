@@ -34,7 +34,7 @@ const ImageGallery = () => {
   ));
 
   return (
-    <div className="relative w-full h-[420px] flex">
+    <div className="relative w-full h-[420px] flex ">
       {tempItems.map((item, index) => (
         <div
           key={index}

@@ -3,15 +3,7 @@
 import { useViewportHooks } from "@/hooks/viewport-hooks";
 import { IoIosArrowDown } from "react-icons/io";
 import SkillsWidget from "./components/SkillsWidget";
-import Carousel, { Slide } from "./components/Carousel";
 import ImageGallery from "./components/ImageGallery";
-
-const devProjSlides: Slide[] = [
-  { imageUrl: "efc.jpg", title: "EFC - Electron File Converter" },
-  { imageUrl: "testimage.png", title: "PROJ2" },
-  { imageUrl: "testimage2.jpg", title: "PROJ3" },
-  { imageUrl: "testimage2.jpg", title: "PROJ4" },
-];
 
 function About() {
   const { scrollToElement, animateOnScroll, gsap } = useViewportHooks();
@@ -25,11 +17,16 @@ function About() {
   return (
     <div
       id="about-page"
-      className="relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full bg-hotpink font-rubik"
+      className="relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full bg-pink-grad font-rubik"
     >
       <img
         src="/blob-1.svg"
-        className="absolute z-0 w-5/12 right-16 top-24 object-cover clear-both"
+        className="absolute z-0 w-5/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom"
+        alt="bubble"
+      />
+      <img
+        src="/blob-2.svg"
+        className="absolute z-0 w-3/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom-left"
         alt="bubble"
       />
       <div
@@ -88,9 +85,14 @@ function About() {
           childrenText={["API Building", "Node.js", "Express.js", "JEST"]}
         />
       </div>
-      <div className="col-start-2 w-full h-full">
+      <div className="col-start-2 w-full h-full mb-[400px]">
         <ImageGallery />
       </div>
+      <img
+        src="/layered_peaks.svg"
+        className="absolute z-1 w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
+        alt="bubble"
+      />
     </div>
   );
 }

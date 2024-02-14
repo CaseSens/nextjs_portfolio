@@ -1,1 +1,37 @@
-<svg id="visual" viewBox="0 0 1920 1080" width="1920" height="1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1"><g transform="translate(1039.515599612567 463.77523342035465)"><path d="M242.5 -234.5C295.5 -189.5 306.8 -94.8 310.8 4C314.8 102.8 311.5 205.5 258.5 283.2C205.5 360.9 102.8 413.4 -11 424.4C-124.7 435.4 -249.4 404.7 -339.4 327C-429.4 249.4 -484.7 124.7 -468.1 16.6C-451.5 -91.5 -362.9 -182.9 -272.9 -227.9C-182.9 -272.9 -91.5 -271.5 1.6 -273.1C94.8 -274.8 189.5 -279.5 242.5 -234.5" fill="#BB004B"></path></g></svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="1080" height="1080" viewBox="0 0 1080 1080" xml:space="preserve">
+	<desc>Created with Fabric.js 5.2.4</desc>
+	<defs>
+		<filter id="strong-inner">
+			<feFlood flood-color="red"/>
+			<!-- This next operation subtracts the original shape from the red color 
+field filling the filter region - which will give you a big color border 
+surrounding the original shape -->
+			<feComposite operator="out" in2="SourceGraphic" />
+			<!-- Next we want to expand the red border so it overlaps the space of the 
+original shape - the radius below will expand it by n pixels -->
+			<feMorphology operator="dilate" radius="32"/>
+			<feGaussianBlur stdDeviation="32" />
+			<!-- After blurring it, we want to select just the parts of the blurred, 
+expanded border that overlap the original shape - which we can do by using 
+the 'atop' operator -->
+			<feComposite operator="atop" in2="SourceGraphic"/>
+		</filter>
+	</defs>
+	<g transform="matrix(1 0 0 1 540 540)" id="96ddeb4e-7ac2-4dfa-a228-a55d7a3d70b5"  >
+		<rect style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1; visibility: hidden;" vector-effect="non-scaling-stroke"  x="-540" y="-540" rx="0" ry="0" width="1080" height="1080" />
+	</g>
+	<g transform="matrix(1 0 0 1 540 540)" id="68ecdb8d-6206-4696-8000-14872525f538"  >
+</g>
+	<g transform="matrix(1.08 0 0 1.08 540 540)" clip-path="url(#CLIPPATH_4)"  >
+		<linearGradient id="SVGID_b_3" gradientUnits="objectBoundingBox" gradientTransform="matrix(0 1 -1 0 1 0)"  x1="0" y1="0" x2="1" y2="0">
+			<stop offset="0%" style="stop-color:rgb(255,0,55);stop-opacity: 1"/>
+			<stop offset="100%" style="stop-color:rgb(252,213,154);stop-opacity: 1"/>
+		</linearGradient>
+		<clipPath id="CLIPPATH_4" >
+			<path transform="matrix(1 0 0 1 0 0) translate(-472.95, -507.64)" id="a" d="M 859.5 633 Q 817 766 696.5 847.5 Q 576 929 448 870.5 Q 320 812 241 717.5 Q 162 623 97 476.5 Q 32 330 148.5 211 Q 265 92 414 116 Q 563 140 699 179.5 Q 835 219 868.5 359.5 Q 902 500 859.5 633 Z" stroke-linecap="round" />
+		</clipPath>
+		<path filter="url(#strong-inner)" style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: url(#SVGID_b_3); fill-rule: nonzero; opacity: 1;"  transform=" translate(-472.95, -507.64)" d="M 859.5 633 Q 817 766 696.5 847.5 Q 576 929 448 870.5 Q 320 812 241 717.5 Q 162 623 97 476.5 Q 32 330 148.5 211 Q 265 92 414 116 Q 563 140 699 179.5 Q 835 219 868.5 359.5 Q 902 500 859.5 633 Z" stroke-linecap="round" />
+	</g>
+</svg>
