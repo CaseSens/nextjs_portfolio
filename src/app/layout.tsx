@@ -1,3 +1,4 @@
+import Head from "next/head";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
@@ -58,12 +59,23 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
-      >
-        {children}
-      </body>
-    </html>
+    <>
+      <Head>
+        <title>CaseyGG Portfolio</title>
+        <meta name="description" content="My Portfolio" />
+        <meta
+          name="viewport"
+          content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+        />
+        {/* Here you could also include the font preloading if necessary */}
+      </Head>
+      <html lang="en">
+        <body
+          className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
+        >
+          {children}
+        </body>
+      </html>
+    </>
   );
 }
