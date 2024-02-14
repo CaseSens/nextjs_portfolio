@@ -58,7 +58,7 @@ interface GallerySeperatorProps extends React.ComponentPropsWithoutRef<"div"> {
 
 const seperatorStyles: React.CSSProperties = {
   height: "100%",
-  width: "3px",
+  width: "1px",
   backgroundColor: "white",
 };
 
