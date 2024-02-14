@@ -27,9 +27,9 @@ const ImageGallery = () => {
       title={item.title}
       itemNo={index}
       onHover={() => handleHoveredItem(index)}
-      className={`relative transition-all flex ${
+      className={`relative transition-all flex p-1 z-30 select-none ${
         index !== hoveredItem ? "min-w-[10%]" : "grow min-w-[10%]"
-      } z-30`}
+      }`}
     />
   ));
 
@@ -75,7 +75,7 @@ const GallerySeparator: React.FC<GallerySeperatorProps> = ({
       onClick={() => onHover(itemNo)}
     >
       <div style={seperatorStyles} className="seperator-line" />
-      <h1 className="clamp-width-medium [writing-mode:vertical-lr] py-1 text-white font-playfair font-regular tracking-wider">
+      <h1 className="text-lg [writing-mode:vertical-lr] py-1 text-white font-playfair font-regular tracking-wider">
         {title}
       </h1>
     </div>
