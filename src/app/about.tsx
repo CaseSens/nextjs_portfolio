@@ -91,10 +91,6 @@ function About() {
       <div className="col-start-2 w-full h-full">
         <ImageGallery />
       </div>
-      <div
-        style={{ marginTop: "1000px" }}
-        className="endTrig col-start-2 h-96 w-full bg-white"
-      ></div>
     </div>
   );
 }

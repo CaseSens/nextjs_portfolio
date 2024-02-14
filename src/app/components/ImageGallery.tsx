@@ -11,7 +11,7 @@ const tempItems: Slide[] = [
   { imageUrl: "cbs.jpg", title: "CBS - Batch Script Maker" },
   { imageUrl: "efc.jpg", title: "EFC - Electron File Converter" },
   { imageUrl: "frac_create.jpg", title: "Fractal Creation Sim" },
-  { imageUrl: "evolution_sim.jpg", title: "Evolution sim." },
+  { imageUrl: "evolution_sim.jpg", title: "Evolution simulator" },
 ];
 
 const ImageGallery = () => {
@@ -27,14 +27,14 @@ const ImageGallery = () => {
       title={item.title}
       itemNo={index}
       onHover={() => handleHoveredItem(index)}
-      className={`relative transition-all flex p-1 z-30 select-none ${
-        index !== hoveredItem ? "min-w-[10%]" : "grow min-w-[10%]"
+      className={`relative transition-all ease-out duration-500 flex p-1 z-30 select-none ${
+        index !== hoveredItem ? "min-w-[6%]" : "grow min-w-[6%]"
       }`}
     />
   ));
 
   return (
-    <div className="relative w-full h-96 flex">
+    <div className="relative w-full h-[420px] flex">
       {tempItems.map((item, index) => (
         <div
           key={index}

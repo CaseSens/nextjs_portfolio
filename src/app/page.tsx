@@ -8,7 +8,7 @@ export default function Main() {
       id="main"
       className="relative h-full w-full flex flex-col"
     >
-      {/* <Header /> */}
+      <Header />
       <Home />
       <About />
     </main>
