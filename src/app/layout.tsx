@@ -67,7 +67,6 @@ export default function RootLayout({
           name="viewport"
           content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
         />
-        {/* Here you could also include the font preloading if necessary */}
       </Head>
       <html lang="en">
         <body
