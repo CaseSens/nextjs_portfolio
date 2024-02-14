@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import classNames from "classnames";
+import { ComponentPropsWithoutRef, useEffect, useRef, useState } from "react";
 
 type Slide = {
   imageUrl: string;
@@ -14,7 +15,12 @@ const tempItems: Slide[] = [
   { imageUrl: "evolution_sim.jpg", title: "Evolution simulator" },
 ];
 
-const ImageGallery = () => {
+interface ImageGalleryProps extends ComponentPropsWithoutRef<"div"> {}
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+  className,
+  ...divProps
+}) => {
   const [hoveredItem, setHoveredItem] = useState(0);
 
   const handleHoveredItem = (itemNo: number) => {
@@ -27,24 +33,30 @@ const ImageGallery = () => {
       title={item.title}
       itemNo={index}
       onHover={() => handleHoveredItem(index)}
-      className={`relative transition-all ease-out duration-500 flex p-1 z-30 select-none ${
-        index !== hoveredItem ? "min-w-[6%]" : "grow min-w-[6%]"
+      className={`relative transition-all ease-out duration-500 flex flex-col p-1 px-4 z-30 select-none ${
+        index !== hoveredItem ? "min-h-[6%]" : "grow min-h-[6%]"
       }`}
     />
   ));
 
   return (
-    <div className="relative w-full h-[420px] flex ">
+    <div
+      {...divProps}
+      className={classNames(
+        "relative w-full h-[60vh] flex flex-col rounded-xl",
+        className
+      )}
+    >
       {tempItems.map((item, index) => (
         <div
           key={index}
-          className={`absolute transition-opacity duration-500 ease-in-out z-10 w-full h-full bg-center bg-cover bg-no-repeat ${
+          className={`absolute rounded-xl transition-opacity duration-500 ease-in-out z-10 w-full h-full bg-center bg-cover bg-no-repeat ${
             index === hoveredItem ? "opacity-100" : "opacity-0"
           }`}
           style={{ backgroundImage: `url(${item.imageUrl})` }}
         />
       ))}
-      <div className="absolute z-20 w-full h-full backdrop-filter backdrop-blur-[1px] bg-black/[0.5]" />
+      <div className="absolute z-20 w-full rounded-xl h-full backdrop-filter backdrop-blur-[2px] bg-black/[0.5]" />
       {mappedItems}
     </div>
   );
@@ -57,8 +69,8 @@ interface GallerySeperatorProps extends React.ComponentPropsWithoutRef<"div"> {
 }
 
 const seperatorStyles: React.CSSProperties = {
-  height: "100%",
-  width: "1px",
+  width: "100%",
+  height: "1px",
   backgroundColor: "white",
 };
 
@@ -75,7 +87,7 @@ const GallerySeparator: React.FC<GallerySeperatorProps> = ({
       onClick={() => onHover(itemNo)}
     >
       <div style={seperatorStyles} className="seperator-line" />
-      <h1 className="text-lg [writing-mode:vertical-lr] py-1 text-white font-playfair font-regular tracking-wider">
+      <h1 className="text-lg px-1 text-white font-playfair font-regular tracking-wider">
         {title}
       </h1>
     </div>

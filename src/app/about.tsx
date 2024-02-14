@@ -14,6 +14,12 @@ function About() {
     });
   };
 
+  const handleScrollToDevGallery = () => {
+    scrollToElement("devGallery", {
+      at: "center",
+    });
+  };
+
   return (
     <div
       id="about-page"
@@ -65,7 +71,10 @@ function About() {
           className="absolute size-12 p-2 transition rounded-md hover:bg-white/[.2] cursor-pointer"
         />
       </div>
-      <div id="devSkills" className="col-start-2 w-full flex flex-col gap-8">
+      <div
+        id="devSkills"
+        className="relative col-start-2 w-full flex flex-col gap-8"
+      >
         <SkillsWidget
           containerId={"dev1Container"}
           widgetId={"dev1Widget"}
@@ -84,9 +93,19 @@ function About() {
           title="BACK-END"
           childrenText={["API Building", "Node.js", "Express.js", "JEST"]}
         />
+        <IoIosArrowDown
+          onClick={handleScrollToDevGallery}
+          color="white"
+          style={{
+            left: "50%",
+            bottom: "-8%",
+            transform: "translate(-50%, 0)",
+          }}
+          className="absolute size-12 p-2 transition rounded-md hover:bg-white/[.2] cursor-pointer"
+        />
       </div>
-      <div className="col-start-2 w-full h-full mb-[400px]">
-        <ImageGallery />
+      <div className="col-start-2 w-full h-full my-[400px] rounded-xl">
+        <ImageGallery id="devGallery" />
       </div>
       <img
         src="/layered_peaks.svg"
