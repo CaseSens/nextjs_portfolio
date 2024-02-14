@@ -24,14 +24,25 @@ export const useViewportHooks = () => {
       // Apply any additional offset if provided
       scrollToPos += offset;
 
-      gsap.to(window, {
-        duration: 1.5,
-        scrollTo: {
-          y: scrollToPos,
-          autoKill: true,
-        },
-        ease: "power1.inOut",
-      });
+      if (/iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: {
+            y: scrollToPos,
+            autoKill: false,
+          },
+          ease: "power1.inOut",
+        });
+      } else {
+        gsap.to(window, {
+          duration: 1.5,
+          scrollTo: {
+            y: scrollToPos,
+            autoKill: true,
+          },
+          ease: "power1.inOut",
+        });
+      }
     }
   };
 
