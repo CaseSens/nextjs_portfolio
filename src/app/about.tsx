@@ -1,12 +1,12 @@
 "use client";
 
-import { useViewportHooks } from "@/hooks/viewport-hooks";
+import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import { IoIosArrowDown } from "react-icons/io";
 import SkillsWidget from "./components/SkillsWidget";
 import ImageGallery from "./components/ImageGallery";
 
 function About() {
-  const { scrollToElement, animateOnScroll, gsap } = useViewportHooks();
+  const { scrollToElement } = useViewportHooks();
 
   const handleScrollToDevInfo = () => {
     scrollToElement("devSkills", {
@@ -23,8 +23,11 @@ function About() {
   return (
     <div
       id="about-page"
-      className="relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full bg-pink-grad font-rubik"
+      style={{transition: "all 2s ease-in-out"}}
+      className="relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full font-rubik"
     >
+      <div className="absolute lightmode w-full h-full z-[1] pointer-events-none bg-pink-grad" />
+      <div className="absolute darkmode w-full h-full z-0 pointer-events-none bg-blue-grad" />
       <img
         src="/blob-1.svg"
         className="absolute z-0 w-5/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom"
@@ -38,7 +41,7 @@ function About() {
       <div
         id="introduction-container"
         style={{ height: "80vh" }}
-        className="col-start-2 relative box-border relative flex items-center justify-center w-full z-1 text-white"
+        className="col-start-2 relative box-border relative flex items-center justify-center w-full z-10 text-white"
       >
         <div
           id="introduction-elem"
@@ -73,7 +76,7 @@ function About() {
       </div>
       <div
         id="devSkills"
-        className="relative col-start-2 w-full flex flex-col gap-8"
+        className="relative z-10 col-start-2 w-full flex flex-col gap-8"
       >
         <SkillsWidget
           containerId={"dev1Container"}
@@ -104,12 +107,12 @@ function About() {
           className="absolute size-12 p-2 transition rounded-md hover:bg-white/[.2] cursor-pointer"
         />
       </div>
-      <div className="col-start-2 w-full h-full my-[400px] rounded-xl">
+      <div className="relative z-10 col-start-2 w-full h-full my-[400px] rounded-xl">
         <ImageGallery id="devGallery" />
       </div>
       <img
         src="/layered_peaks.svg"
-        className="absolute z-1 w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
+        className="absolute z-10 w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
         alt="bubble"
       />
     </div>

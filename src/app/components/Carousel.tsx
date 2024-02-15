@@ -1,6 +1,6 @@
 "use client";
 
-import { useViewportHooks } from "@/hooks/viewport-hooks";
+import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import { title } from "process";
 import {
   ForwardedRef,

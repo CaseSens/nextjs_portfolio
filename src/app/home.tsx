@@ -1,6 +1,6 @@
 "use client";
 
-import { useViewportHooks } from "@/hooks/viewport-hooks";
+import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import IntroButton from "./components/IntroButton";
 
 export default function Home() {
@@ -15,7 +15,12 @@ export default function Home() {
     <div className="relative z-0 bg-transparent h-screen grid grid-cols-page-padding-cols-sm place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full text-white font-rubik font-bold text-center shrink-0 select-none">
       <img
         src="/waves-bg.svg"
-        className="absolute inset-0 object-cover h-full w-full"
+        className="lightmode absolute inset-0 object-cover h-full w-full z-[1] dark:opacity-0"
+        alt="Background"
+      />
+      <img
+        src="/waves-bg-dark.svg"
+        className="darkmode absolute inset-0 object-cover h-full w-full z-[0]"
         alt="Background"
       />
       <div className="absolute col-start-2 col-end-2 w-full z-30 inset-0 flex items-center justify-center">

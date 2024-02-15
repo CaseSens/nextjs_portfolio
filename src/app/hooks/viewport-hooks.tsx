@@ -55,7 +55,54 @@ export const useViewportHooks = () => {
     gsap.fromTo(targets, fromVars, toVars);
   };
 
-  return { scrollToElement, animateOnScroll, gsap };
+  const swipeOutOfPage = (classname: string, dir: "left" | "right") => {
+    gsap.to(`.${classname}`, {
+      duration: 2,
+      x: dir === "right" ? window.outerWidth : -window.outerWidth,
+      ease: "power1.in",
+    });
+  };
+
+  const swipeIntoPage = (classname: string) => {
+    const elems = document.querySelectorAll<HTMLElement>(`.${classname}`);
+
+    gsap.set(elems, {
+      duration: 0,
+      x: function (index, target) {
+        // This callback function will be invoked for each target
+        // It will place each element just outside the right edge of the screen
+        return window.innerWidth - 2 * target.getBoundingClientRect().width;
+      },
+    });
+
+    gsap.to(elems, {
+      duration: 2,
+      x: 0,
+      ease: "power1.out",
+    });
+  };
+
+  const fadeIntoPage = (classname: string, dir: "in" | "out") => {
+    gsap.to(`.${classname}`, {
+      duration: 2,
+      ease: "power2.inOut",
+      opacity: dir === "in" ? 1 : 0,
+    });
+  };
+
+  const getColorMode = () => {
+    return localStorage.getItem("color-theme");
+  };
+
+  return {
+    scrollToElement,
+    animateOnScroll,
+    gsap,
+    swipeOutOfPage,
+    swipeIntoPage,
+    fadeIntoPage,
+    getColorMode,
+  };
 };
 
 function getScrollToPos(elemRect: DOMRect, at: atParams = "top"): number {

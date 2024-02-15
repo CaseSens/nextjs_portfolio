@@ -1,4 +1,4 @@
-import { useViewportHooks } from "@/hooks/viewport-hooks";
+import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import { useEffect } from "react";
 
 interface SkillsWidgetProps {

@@ -1,8 +1,9 @@
-import Head from "next/head";
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 import "./globals.css";
+import Header from "./components/Header";
+import { ColorThemeProvider } from "./providers/ColorThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 const rubik = localFont({
@@ -72,7 +73,12 @@ export default function RootLayout({
       <body
         className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
       >
-        {children}
+        <ColorThemeProvider attribute="class">
+          <>
+            <Header />
+            {children}
+          </>
+        </ColorThemeProvider>
       </body>
     </html>
   );
