@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  themeTransitionStyles,
-  useViewportHooks,
-} from "@/app/hooks/viewport-hooks";
+import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import IntroButton from "./components/IntroButton";
 
 export default function Home() {
