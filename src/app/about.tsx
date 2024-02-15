@@ -112,7 +112,7 @@ function About() {
       </div>
       <img
         src="/layered_peaks.svg"
-        className="absolute z-10 w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
+        className="w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
         alt="bubble"
       />
     </div>
