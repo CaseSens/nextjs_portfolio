@@ -10,8 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "pink-grad": "linear-gradient(to bottom, #C62368, #931C1C, black 95%)",
-        "blue-grad": "linear-gradient(to bottom, #030032, #931C1C, black 95%)",
+        "pink-grad": "linear-gradient(to bottom, #C62368, #931C1C 70%, black 95%)",
+        "blue-grad": "linear-gradient(to bottom, #030032, #931C1C 70%, black 95%)",
       },
       colors: {
         darkblue: "#01223b",

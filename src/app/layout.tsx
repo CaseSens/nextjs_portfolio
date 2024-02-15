@@ -74,10 +74,8 @@ export default function RootLayout({
         className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden`}
       >
         <ColorThemeProvider attribute="class">
-          <>
-            <Header />
-            {children}
-          </>
+          <Header />
+          {children}
         </ColorThemeProvider>
       </body>
     </html>

@@ -18,6 +18,7 @@ const TooltipButton: React.FC<TooltipButtonProps> = ({
   ...divProps
 }) => {
   const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isHeldDown, setIsHeldDown] = useState<boolean>(false);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   let visibilityTimer: ReturnType<typeof setTimeout>;
 
@@ -34,6 +35,14 @@ const TooltipButton: React.FC<TooltipButtonProps> = ({
     }, 300);
   };
 
+  const handleMouseDown = () => {
+    setIsHeldDown(true);
+  };
+
+  const handleMouseUp = () => {
+    setIsHeldDown(false);
+  };
+
   useEffect(() => {
     // Clear visibility timer on component unmount
     return () => clearTimeout(visibilityTimer);
@@ -48,26 +57,43 @@ const TooltipButton: React.FC<TooltipButtonProps> = ({
   */
 
   return (
-    <div {...divProps} className={classNames("relative w-max h-max flex gap-2 items-center")}>
-      {link ? (
-        <Link href={link ?? "/"}>
+    <div
+      {...divProps}
+      className={classNames("relative w-max h-max flex gap-2 items-center")}
+    >
+      <div className="w-[48px] h-[48px] flex items-center justify-center">
+        {link ? (
+          <Link href={link ?? "/"}>
+            <button
+              className="transition-all w-max h-max p-3 rounded-[8000px] flex items-center justify-center hover:bg-white/[0.1] pointer-events-auto"
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
+              onMouseDown={handleMouseDown}
+              onMouseUp={handleMouseUp}
+            >
+              <Icon
+                color="white"
+                style={{ fontSize: isHeldDown ? "1.25rem" : "1.5rem" }}
+                className="transition-all"
+              />
+            </button>
+          </Link>
+        ) : (
           <button
-            className="transition-all w-full h-fit p-3 rounded-[8000px] hover:bg-white/[0.1] pointer-events-auto"
+            className="transition-all w-max h-max p-3 rounded-[8000px] flex items-center justify-center hover:bg-white/[0.1] pointer-events-auto"
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
           >
-            <Icon color="white" className="size-6" />
+            <Icon
+              color="white"
+              style={{ fontSize: isHeldDown ? "1.25rem" : "1.5rem" }}
+              className="transition-all"
+            />
           </button>
-        </Link>
-      ) : (
-        <button
-          className="transition-all w-full h-fit p-3 rounded-[8000px] hover:bg-white/[0.1] pointer-events-auto"
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
-        >
-          <Icon color="white" className="size-6" />
-        </button>
-      )}
+        )}
+      </div>
       <div
         className="transition-all flex flex-col items-start justify-center z-2 w-fit h-full bg-white/[0.1] px-4 py-2 rounded-md text-white select-none"
         style={{

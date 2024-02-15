@@ -1,6 +1,9 @@
 "use client";
 
-import { useViewportHooks } from "@/app/hooks/viewport-hooks";
+import {
+  themeTransitionStyles,
+  useViewportHooks,
+} from "@/app/hooks/viewport-hooks";
 import IntroButton from "./components/IntroButton";
 
 export default function Home() {
@@ -12,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative z-0 bg-transparent h-screen grid grid-cols-page-padding-cols-sm place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full text-white font-rubik font-bold text-center shrink-0 select-none">
+    <div className="transition-colors duration-[2000ms] relative z-0 bg-transparent h-screen grid grid-cols-page-padding-cols-sm place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full text-black dark:text-white font-rubik font-bold text-center shrink-0 select-none">
       <img
         src="/waves-bg.svg"
         className="lightmode absolute inset-0 object-cover h-full w-full z-[1] dark:opacity-0"
