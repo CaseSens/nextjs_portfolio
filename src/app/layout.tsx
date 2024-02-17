@@ -48,6 +48,23 @@ const playfair = localFont({
   ],
   variable: "--font-playfair",
 });
+const poppins = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Poppins/Poppins-Regular.ttf",
+      weight: "400",
+    },
+    {
+      path: "../../public/fonts/Poppins/Poppins-SemiBold.ttf",
+      weight: "600",
+    },
+    {
+      path: "../../public/fonts/Poppins/Poppins-Bold.ttf",
+      weight: "700",
+    },
+  ],
+  variable: "--font-poppins",
+});
 
 export const metadata: Metadata = {
   title: "CaseyGG Portfolio",
@@ -71,7 +88,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${rubik.variable} ${playfair.variable} font-sans overflow-x-hidden min-w-dvw min-h-dvh`}
+        className={`${inter.className} ${rubik.variable} ${playfair.variable} ${poppins.variable} font-sans overflow-x-hidden min-w-dvw min-h-dvh`}
       >
         <ColorThemeProvider attribute="class">
           <Header />

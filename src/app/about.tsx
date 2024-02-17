@@ -29,12 +29,12 @@ function About() {
       <div className="absolute darkmode w-full h-full z-0 pointer-events-none bg-blue-grad" />
       <img
         src="/blob-1.svg"
-        className="absolute z-0 w-5/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom"
+        className="absolute z-[2] w-5/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom"
         alt="bubble"
       />
       <img
         src="/blob-2.svg"
-        className="absolute z-0 w-3/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom-left"
+        className="absolute z-[2] w-3/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom-left"
         alt="bubble"
       />
       <div

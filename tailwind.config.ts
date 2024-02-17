@@ -28,6 +28,7 @@ const config: Config = {
       fontFamily: {
         rubik: ["var(--font-rubik)"],
         playfair: ["var(--font-playfair)"],
+        poppins: ["var(--font-poppins)"],
       },
       gridTemplateColumns: {
         "widget-img-grid-col": "1fr 1fr",
