@@ -32,7 +32,7 @@ const projectGallerySlides: ProjectGallerySlide[] = [
 ];
 
 function FolderArchiveGallery() {
-  const { gsap } = useViewportHooks();
+  const { gsap, scrollToElementX } = useViewportHooks();
   const [selectedFolder, setSelectedFolder] = useState<"programming" | "art">(
     "programming"
   );
@@ -42,25 +42,28 @@ function FolderArchiveGallery() {
     <GalleryContentView key={index} slide={slide} id={index} />
   ));
 
-  const onImageClick = (id: number) => {
-    const currentContent = document.getElementById(
-      `content-${imageIndexClicked}`
-    );
-    const contentToSwipeTo = document.getElementById(`content-${id}`);
+const onImageClick = (id: number) => {
+  const contentContainer = document.getElementById("content-container");
+  const contentToSwipeTo = document.getElementById(`content-${id}`);
 
-    if (currentContent && contentToSwipeTo) {
-      const currentX = currentContent.getBoundingClientRect().x;
-      const contentX = contentToSwipeTo.getBoundingClientRect().x;
-      const diff = contentX - currentX;
+  if (contentContainer && contentToSwipeTo) {
+    // Get the target element's position relative to the viewport
+    const targetX = contentToSwipeTo.getBoundingClientRect().left;
+    // Get the container's current transform value
+    const currentTransform = gsap.getProperty(contentContainer, "x") || 0;
+    // Calculate the difference between the viewport's left edge and the container's left edge
+    const containerOffset = contentContainer.getBoundingClientRect().left;
+    // Calculate the needed transformation: current transform + (target position - container's current offset)
+    const newX = currentTransform as number + (targetX - containerOffset);
 
-      gsap.to("#content-container", {
-        x: -diff,
-        duration: 2,
-        ease: "power1.inOut",
-      });
-    }
-  };
-
+    gsap.to(contentContainer, {
+      x: `-=${newX}`, // Using relative value to adjust from the current position
+      duration: 1,
+      ease: "power1.inOut",
+      onInterrupt: () => {}
+    });
+  }
+};
   useEffect(() => {}, [imageIndexClicked]);
 
   return (
@@ -184,12 +187,14 @@ interface GalleryImageSnippetProps {
   image: string;
   index: number;
   onClick: (index: number) => void;
+  currentImageClicked: number;
 }
 
 const GalleryImageSnippet: React.FC<GalleryImageSnippetProps> = ({
   image,
   index,
   onClick,
+  currentImageClicked,
 }) => {
   const handleClick = () => {
     onClick(index);
@@ -198,6 +203,7 @@ const GalleryImageSnippet: React.FC<GalleryImageSnippetProps> = ({
   return (
     <img
       src={image}
+      style={{border: currentImageClicked === index ? "1px solid white" : "none"}}
       className="h-full w-[48px] cursor-pointer"
       onClick={handleClick}
     />
