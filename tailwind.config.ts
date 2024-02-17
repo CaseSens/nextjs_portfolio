@@ -10,13 +10,20 @@ const config: Config = {
   theme: {
     extend: {
       backgroundImage: {
-        "pink-grad": "linear-gradient(to bottom, #C62368, #931C1C 70%, black 95%)",
-        "blue-grad": "linear-gradient(to bottom, #030032, #931C1C 70%, black 95%)",
+        "pink-grad":
+          "linear-gradient(to bottom, #C62368, #931C1C 70%, black 95%)",
+        "blue-grad":
+          "linear-gradient(to bottom, #030032, #931C1C 70%, black 95%)",
       },
       colors: {
         darkblue: "#01223b",
         hotpink: "#c62368",
         lightgreen: "#6CF199",
+
+        bluestone: "#0E0B09",
+        primbeige: "#C3BBB5",
+
+        textcream: "#F1EFEE",
       },
       fontFamily: {
         rubik: ["var(--font-rubik)"],
