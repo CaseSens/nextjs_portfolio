@@ -142,7 +142,7 @@ export const useViewportHooks = () => {
     gsap.set(outerWrappers, { yPercent: 100 });
     gsap.set(innerWrappers, { yPercent: -100 });
 
-    function gotoSection(index, direction) {
+    function gotoSection(index: number, direction: number) {
       index = wrap(index); // make sure it's valid
       animating = true;
       let fromTop = direction === -1,
