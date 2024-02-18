@@ -1,8 +1,9 @@
 import gsap from "gsap";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Observer } from "gsap/Observer";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin, Observer);
 
 type atParams = "top" | "bottom" | "left" | "right" | "center";
 
@@ -49,7 +50,7 @@ export const useViewportHooks = () => {
 
   const scrollToElementX = (
     id: string,
-    { at, offset = 0, to }: scrollToElementParams,
+    { at, offset = 0, to }: scrollToElementParams
   ) => {
     const element = document.getElementById(id);
     if (element) {
@@ -129,6 +130,63 @@ export const useViewportHooks = () => {
     return localStorage.getItem("color-theme");
   };
 
+  const applyObserver = () => {
+    let sections = document.querySelectorAll("section"),
+      images = document.querySelectorAll(".bg"),
+      outerWrappers = gsap.utils.toArray(".outer"),
+      innerWrappers = gsap.utils.toArray(".inner"),
+      currentIndex = -1,
+      wrap = gsap.utils.wrap(0, sections.length),
+      animating: boolean;
+
+    gsap.set(outerWrappers, { yPercent: 100 });
+    gsap.set(innerWrappers, { yPercent: -100 });
+
+    function gotoSection(index, direction) {
+      index = wrap(index); // make sure it's valid
+      animating = true;
+      let fromTop = direction === -1,
+        dFactor = fromTop ? -1 : 1,
+        tl = gsap.timeline({
+          defaults: { duration: 1.25, ease: "power1.inOut" },
+          onComplete: () => (animating = false),
+        });
+      if (currentIndex >= 0) {
+        // The first time this function runs, current is -1
+        gsap.set(sections[currentIndex], { zIndex: 0 });
+        tl.to(images[currentIndex], { yPercent: -15 * dFactor }).set(
+          sections[currentIndex],
+          { autoAlpha: 0 }
+        );
+      }
+      gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
+      tl.fromTo(
+        [outerWrappers[index], innerWrappers[index]],
+        {
+          yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor),
+        },
+        {
+          yPercent: 0,
+        },
+        0
+      ).fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0);
+
+      currentIndex = index;
+    }
+
+    const observer = Observer.create({
+      type: "wheel,touch,pointer",
+      wheelSpeed: -1,
+      onDown: () => !animating && gotoSection(currentIndex - 1, -1),
+      onUp: () => !animating && gotoSection(currentIndex + 1, 1),
+      tolerance: 10,
+      preventDefault: true,
+    });
+
+    gotoSection(0, 1);
+    return observer;
+  };
+
   return {
     scrollToElement,
     scrollToElementX,
@@ -138,6 +196,7 @@ export const useViewportHooks = () => {
     swipeIntoPage,
     fadeIntoPage,
     getColorMode,
+    applyObserver,
   };
 };
 

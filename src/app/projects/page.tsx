@@ -1,27 +1,77 @@
 "use client";
+import "./page.css";
 
-import Image from "next/image";
-import FolderArchiveGallery from "../components/FolderArchiveGallery";
+import { useEffect } from "react";
+import { useViewportHooks } from "../hooks/viewport-hooks";
 
 export default function Projects() {
+  const { applyObserver } = useViewportHooks();
+  useEffect(() => {
+    const observer = applyObserver();
 
+    return () => {
+      observer.kill();
+    };
+  }, []);
 
   return (
-    <main className="relative transition-colors duration-[2000ms] min-w-dvw min-h-dvh bg-[#CCC6B0] dark:bg-bluestonetext-black dark:text-textcream">
-      <img
-        src="flat-mountains_org.svg"
-        className="absolute inset-0 object-cover max-h-dvh h-full w-full scale-y-[-1] z-10 pointer-events-none"
-      />
-      <Image
-        priority
-        src="/subtle-prism.svg"
-        alt="prism background"
-        layout="fill"
-        className="pointer-events-none"
-      />
-      <div className="relative w-full min-h-dvh z-10 grid grid-cols-page-padding-cols-sm grid-rows-1 place-items-center py-12 md:px-8 lg:px-12 xl:px-16">
-        <FolderArchiveGallery />
-      </div>
+    <main className="relative transition-colors duration-[2000ms] w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins">
+      <section className="proj-section first">
+        <div className="outer">
+          <div className="inner">
+            <div
+              style={{
+                backgroundImage: "url('flat-mountains_org.svg')",
+              }}
+              className="bg transition-colors duration-[2000ms] one bg-[#CCC6B0] dark:bg-bluestone"
+            >
+              <h2 className="section-heading">PROJECT 1</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="proj-section second">
+        <div className="outer">
+          <div className="inner">
+            <div
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/portfolio_self.jpg')`,
+              }}
+              className="bg two"
+            >
+              <h2 className="section-heading">PROJECT 1</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="proj-section third">
+        <div className="outer">
+          <div className="inner">
+            <div
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/cbs.jpg')`,
+              }}
+              className="bg three"
+            >
+              <h2 className="section-heading">PROJECT 2</h2>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="proj-section">
+        <div className="outer">
+          <div className="inner">
+            <div
+              style={{
+                backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('/efc.jpg')`,
+              }}
+              className="bg four"
+            >
+              <h2 className="section-heading">PROJECT 3</h2>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
