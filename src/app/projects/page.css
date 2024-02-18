@@ -13,9 +13,6 @@ section {
   }
 
   .bg {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: absolute;
     height: 100%;
     width: 100%;
@@ -23,10 +20,6 @@ section {
     background-size: cover;
     background-position: center;
     will-change: transform;
-
-    h2 {
-      z-index: 2;
-    }
 
     .clip-text {
       overflow: hidden;

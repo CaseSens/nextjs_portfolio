@@ -136,26 +136,37 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ slide, useGrad }) => {
     <section className={`proj-section ${slide.title} font-poppins`}>
       <div className="outer">
         <div className="inner">
-          <div
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('${slide.image}')`,
-            }}
-            className="bg two"
-          >
+          <div className="bg">
+            <div
+              style={{ backgroundImage: `url('${slide.image}')` }}
+              id="bg-image-container"
+              className="absolute z-10 w-full h-full bg-black bg-cover bg-no-repeat bg-center"
+            >
+              <div
+                id="fg-image-container"
+                className="absolute z-20 flex items-center justify-center bg-clip-border w-full h-full bg-contain bg-no-repeat bg-center backdrop-filter backdrop-blur-lg rounded-lg xl:invisible"
+              >
+                <img
+                  src={slide.image}
+                  className="w-max h-max max-w-full max-h-full bg-contain bg-no-repeat bg-center shadow-2xl"
+                />
+              </div>
+            </div>
+
             <div className="w-full h-full pointer-events-none backdrop-filter backdrop-blur-[1px]" />
-            <div className="absolute top-10 right-10 flex gap-16 h-max backdrop-filter backdrop-blur-md bg-white/20 p-5 rounded-lg">
-              <span className="w-full h-full flex flex-col gap-4 col-start-1">
-                <h2 className="clamp-width-medium font-bold border-b-4">
-                  {slide.title}
-                </h2>
-                <div className="flex flex-col font-semibold">
+            <div className="absolute max-w-lg w-full z-30 bottom-0 right-1/2 sm:top-6 sm:right-6 sm:translate-x-0 lg:right-10 lg:top-10 translate-x-1/2 flex flex-col gap-4 h-max backdrop-filter backdrop-blur-md bg-white/40 p-5 rounded-lg">
+              <h2 className="clamp-width-small font-bold border-b-4 text-center">
+                {slide.title}
+              </h2>
+              <span className="w-full flex gap-8">
+                <div className="w-1/2">
                   {slide.skills.map((skill) => (
-                    <p className="clamp-width-small">{skill}</p>
+                    <p className="clamp-width-default">{skill}</p>
                   ))}
                 </div>
-              </span>
-              <span className="w-full h-full max-w-96 flex items-center justify-center clamp-width-default col-start-2 text-pretty font-semibold">
-                <h1>{slide.description}</h1>
+                <div className="w-1/2 clamp-width-xsmall">
+                  {slide.description}
+                </div>
               </span>
             </div>
           </div>
