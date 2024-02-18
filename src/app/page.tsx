@@ -12,7 +12,7 @@ export default function Main() {
     >
       <div
         style={{ backgroundImage: `url("grain.svg")` }}
-        className="absolute pointer-events-none bg-repeat z-10 w-full h-full"
+        className="absolute pointer-events-none bg-repeat z-10 w-full h-full opacity-50"
       ></div>
       <Home />
       <About />

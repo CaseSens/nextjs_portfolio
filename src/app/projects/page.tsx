@@ -56,9 +56,10 @@ const projectGallerySlides: ProjectGallerySlide[] = [
 
 export default function Projects() {
   const { applyObserver } = useViewportHooks();
-  const TRANSITION_DELAY = 2;
-  const [introDismissed, setIntroDismissed] = useState<boolean>(false);
-  const [introScreenOpacity, setIntroScreenOpacity] = useState<0 | 1>(1);
+  const TRANSITION_DELAY = 2000;
+  const [introDismissed, setIntroDismissed] = useState(false);
+  const [hasAlpha, setHasAlpha] = useState(true);
+  let introTimeout: ReturnType<typeof setTimeout> | null;
 
   useEffect(() => {
     let observer: Observer;
@@ -67,27 +68,41 @@ export default function Projects() {
     }
 
     return () => {
-      if (observer) {
-        observer.kill();
-      }
+      introTimeout = null;
+      observer?.kill();
     };
   }, [introDismissed]);
 
   const handleDismissed = () => {
-    
-  }
+    setHasAlpha(false);
+    introTimeout = setTimeout(() => {
+      setIntroDismissed(true);
+    }, TRANSITION_DELAY);
+  };
 
   return (
     <main className="relative transition-colors duration-[2000ms] w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins">
       {!introDismissed ? (
-        <div className="w-full h-full flex items-center justify-center fixed top-0">
+        <div
+          style={{
+            opacity: hasAlpha ? "100" : "0",
+            transition: "opacity 2s ease",
+          }}
+          className="w-full h-full flex items-center justify-center fixed top-0"
+        >
           <div className="flex flex-col justify-start items-center gap-4 text-center">
             <h2 className="section-heading">WELCOME TO MY PROJECTS</h2>
             <span>
               <p>This is an interactive gallery</p>
               <p> You can view all of my projects simply by scrolling</p>
             </span>
-            <button className="p-4 border-2 rounded-lg" onClick={() => setIntroDismissed(true)}> Click me to get started </button>
+            <button
+              className="p-4 border-2 rounded-lg"
+              onClick={handleDismissed}
+            >
+              {" "}
+              Click me to get started{" "}
+            </button>
           </div>
         </div>
       ) : (

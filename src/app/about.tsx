@@ -23,7 +23,7 @@ function About() {
   return (
     <div
       id="about-page"
-      className="transition-colors duration-[2000ms] relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full font-rubik text-black dark:text-white"
+      className="transition-colors duration-[1500ms] relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full font-rubik text-black dark:text-white"
     >
       <div className="absolute lightmode w-full h-full z-[1] pointer-events-none bg-pink-grad dark:opacity-0" />
       <div className="absolute darkmode w-full h-full z-0 pointer-events-none bg-blue-grad" />
@@ -40,11 +40,11 @@ function About() {
       <div
         id="introduction-container"
         style={{ height: "80vh" }}
-        className="col-start-2 relative box-border relative flex items-center justify-center w-full z-10"
+        className="col-start-2 box-border relative flex items-center justify-center w-full z-10"
       >
         <div
           id="introduction-elem"
-          className="relative grid gap-8 grid-cols-1 grid-rows-widget-img-grid-row lg:grid-rows-1 lg:grid-cols-widget-img-grid-col lg:grid-rows-1 w-full h-2/3 bg-white/[.1] p-8 backdrop-filter backdrop-blur-lg shadow-2xl rounded-lg border-2"
+          className="relative grid gap-8 grid-cols-1 grid-rows-widget-img-grid-row lg:grid-rows-1 lg:grid-cols-widget-img-grid-col w-full h-2/3 bg-white/[.1] p-8 backdrop-filter backdrop-blur-lg shadow-2xl rounded-lg border-2"
         >
           <div id="info-container" className="flex flex-col w-full">
             <h1 className="clamp-width-large font-normal grow">
