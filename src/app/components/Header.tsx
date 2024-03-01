@@ -19,16 +19,8 @@ const Header = () => {
     setTheme(currentTheme === "light" ? "dark" : "light");
   };
 
-  useEffect(() => {
-    if (resolvedTheme === "dark") {
-      fadeIntoPage("lightmode", "out");
-    } else {
-      fadeIntoPage("lightmode", "in");
-    }
-  }, [resolvedTheme]);
-
   return (
-    <div className="header box-border fixed flex flex-col gap-2 justify-center justify-start w-full top-0 p-4 z-20 pointer-events-none">
+    <div className="header box-border fixed flex flex-col gap-2 justify-start w-full top-0 p-4 z-20 pointer-events-none">
       <TooltipButton
         Icon={resolvedTheme === "dark" ? MdLightMode : MdDarkMode}
         tooltipText={
@@ -44,8 +36,7 @@ const Header = () => {
       />
       <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" />
       <h1
-        style={{ transition: "all 2s ease" }}
-        className="fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none "
+        className="transition duration-[2000ms] fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none "
       >
         *Website under construction*
       </h1>

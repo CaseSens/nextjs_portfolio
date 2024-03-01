@@ -33,7 +33,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       title={item.title}
       itemNo={index}
       onHover={() => handleHoveredItem(index)}
-      className={`relative transition-all ease-out duration-500 flex flex-col p-1 px-4 z-30 select-none ${
+      className={`relative flex flex-col p-1 px-4 z-30 select-none ${
         index !== hoveredItem ? "min-h-[6%]" : "grow min-h-[6%]"
       }`}
     />
@@ -50,7 +50,7 @@ const ImageGallery: React.FC<ImageGalleryProps> = ({
       {tempItems.map((item, index) => (
         <div
           key={index}
-          className={`absolute rounded-xl transition-opacity duration-500 ease-in-out z-10 w-full h-full bg-center bg-cover bg-no-repeat ${
+          className={`absolute rounded-xl z-10 w-full h-full bg-center bg-cover bg-no-repeat ${
             index === hoveredItem ? "opacity-100" : "opacity-0"
           }`}
           style={{ backgroundImage: `url(${item.imageUrl})` }}

@@ -23,10 +23,10 @@ function About() {
   return (
     <div
       id="about-page"
-      className="transition-colors duration-[1500ms] relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full font-rubik text-black dark:text-white"
+      className="transition-colors duration-[2000ms] relative grid grid-cols-page-padding-cols-sm gap-y-96 place-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full font-rubik text-black dark:text-white"
     >
-      <div className="absolute lightmode w-full h-full z-[1] pointer-events-none bg-pink-grad dark:opacity-0" />
-      <div className="absolute darkmode w-full h-full z-0 pointer-events-none bg-blue-grad" />
+      <div className="transition-opacity duration-[2000ms] absolute w-full h-full z-[1] pointer-events-none bg-pink-grad dark:opacity-0" />
+      <div className="absolute w-full h-full z-0 pointer-events-none bg-blue-grad" />
       <img
         src="/blob-1.svg"
         className="absolute z-[2] w-5/12 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)] motion-safe:animate-bubble-up-bottom"
@@ -70,7 +70,7 @@ function About() {
         <IoIosArrowDown
           onClick={handleScrollToDevInfo}
           style={{ left: "50%", bottom: "8%", transform: "translate(-50%, 0)" }}
-          className="absolute size-12 p-2 transition rounded-md hover:bg-white/[.2] cursor-pointer"
+          className="absolute size-12 p-2 rounded-md hover:bg-white/[.2] cursor-pointer"
         />
       </div>
       <div
@@ -103,7 +103,7 @@ function About() {
             bottom: "-8%",
             transform: "translate(-50%, 0)",
           }}
-          className="absolute size-12 p-2 transition rounded-md hover:bg-white/[.2] cursor-pointer"
+          className="absolute size-12 p-2 rounded-md hover:bg-white/[.2] cursor-pointer"
         />
       </div>
       <div className="col-start-2 w-full h-full my-[400px] rounded-xl">

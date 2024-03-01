@@ -81,7 +81,7 @@ export default function Projects() {
   };
 
   return (
-    <main className="relative transition-colors duration-[2000ms] w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins">
+    <main className="relative w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins">
       {!introDismissed ? (
         <>
           <img
@@ -154,7 +154,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ slide, useGrad }) => {
             </div>
 
             <div className="w-full h-full pointer-events-none backdrop-filter backdrop-blur-[1px]" />
-            <div className="absolute max-w-lg w-full z-30 bottom-0 right-1/2 sm:top-6 sm:right-6 sm:translate-x-0 lg:right-10 lg:top-10 translate-x-1/2 flex flex-col gap-4 h-max backdrop-filter backdrop-blur-md bg-white/40 p-5 rounded-lg">
+            <div className="absolute max-w-lg w-full z-30 bottom-0 right-1/2 sm:top-6 sm:right-6 sm:translate-x-0 lg:right-10 lg:top-10 translate-x-1/2 flex flex-col gap-4 h-max backdrop-filter backdrop-blur-md bg-white/40 p-5 rounded-lg shadow-2xl">
               <h2 className="clamp-width-small font-bold border-b-4 text-center">
                 {slide.title}
               </h2>

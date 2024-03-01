@@ -7,8 +7,7 @@ export default function Main() {
   return (
     <main
       id="main"
-      style={{ transition: "all 2s ease-in-out" }}
-      className="relative min-h-screen w-full flex flex-col bg-darkblue dark:bg-hotpink"
+      className="transition-colors duration-[2000ms] relative min-h-screen w-full flex flex-col bg-darkblue dark:bg-hotpink"
     >
       <div
         style={{ backgroundImage: `url("grain.svg")` }}

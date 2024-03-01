@@ -196,8 +196,8 @@ const GalleryContentView: React.FC<GalleryContentViewProps> = ({
             src={slide.image}
             className="w-max h-max max-w-full max-h-full bg-contain bg-no-repeat bg-center shadow-2xl"
           />
-          <div className="absolute transition-all duration-500 flex justify-center w-full h-full backdrop-filter backdrop-blur-[1.5px] opacity-0 hover:opacity-100 rounded-lg">
-            <button className="transition-all duration-300 clamp-width-medium w-full h-full">
+          <div className="absolute flex justify-center w-full h-full backdrop-filter backdrop-blur-[1.5px] opacity-0 hover:opacity-100 rounded-lg">
+            <button className="clamp-width-medium w-full h-full">
               Go to project
             </button>
           </div>
