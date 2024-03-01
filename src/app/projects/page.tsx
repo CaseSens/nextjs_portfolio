@@ -148,7 +148,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
     if (detailsActive) {
       transition(`transitionable-container-${index}`, {
         opacity: "1",
-        duration: .2,
+        duration: 0.2,
         ease: "power1.inOut",
       });
       transition(`transitionable-font-${index}`, {
@@ -171,7 +171,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
       transition(`transitionable-blur-${index}`, {
         opacity: "0",
         duration: 1,
-        delay: .3,
+        delay: 0.3,
         ease: "power1.in",
       });
       transition(`transitionable-container-${index}`, {
@@ -201,16 +201,16 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
                   className="w-max h-max max-w-full max-h-full bg-contain bg-no-repeat bg-center shadow-2xl"
                 />
               </div>
-              <div
-                className={`transitionable-blur-${index} opacity-0 absolute w-full h-full pointer-events-none backdrop-filter backdrop-blur-[12px]`}
-              />
-              <div className="absolute top-14 right-1/2 translate-x-1/2 px-12 py-4 backdrop-blur-md rounded-lg shadow-2xl bg-black/40">
-                <h2 className="clamp-width-medium font-bold text-center">
-                  {slide.title}
-                </h2>
-              </div>
             </div>
-            <div className="transition-all duration-[1000ms] ease-in absolute max-w-lg w-full z-30 bottom-8 right-1/2 translate-x-1/2 flex flex-col items-center gap-4">
+            <div
+              className={`transitionable-blur-${index} opacity-0 absolute z-30 w-full h-full top-0 left-0 pointer-events-none backdrop-filter backdrop-blur-[12px]`}
+            />
+            <div className="absolute top-14 right-1/2 z-30 translate-x-1/2 px-12 py-4 backdrop-blur-md rounded-lg shadow-2xl bg-black/40">
+              <h2 className="clamp-width-medium font-bold text-center">
+                {slide.title}
+              </h2>
+            </div>
+            <div className="transition-all duration-[1000ms] ease-in absolute max-w-[80dvw] sm:max-w-sm md:max-w-md lg:max-w-lg w-full z-30 bottom-8 right-1/2 translate-x-1/2 flex flex-col items-center gap-4">
               <h1
                 onClick={handleDetailsActive}
                 className=" cursor-pointer border-2 p-2"
@@ -233,7 +233,9 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
                     <h1 className="underline">Skills:</h1>
                     <div className="flex flex-wrap gap-4 items-center w-full mb-4">
                       {slide.skills.map((skill, index) => (
-                        <h1 key={index} className={`p-2 border-2`}>{skill}</h1>
+                        <h1 key={index} className={`p-2 border-2`}>
+                          {skill}
+                        </h1>
                       ))}
                     </div>
                     <h1 className="underline">Description:</h1>
@@ -248,21 +250,3 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
     </section>
   );
 };
-
-/*
-
-                  <div className="w-max">
-                    {slide.skills.map((skill) => (
-                      <p
-                        className={`clamp-width-default transitionable-font-${index}`}
-                      >
-                        {skill}
-                      </p>
-                    ))}
-                  </div>
-                  <div
-                    className={`w-1/2 clamp-width-xsmall transitionable-font-${index}`}
-                  >
-                    {slide.description}
-                  </div>
-*/
