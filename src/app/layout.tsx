@@ -92,10 +92,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} ${rubik.variable} ${playfair.variable} ${poppins.variable} font-sans overflow-x-hidden min-w-dvw min-h-dvh`}
+        className={`${inter.className} ${rubik.variable} ${playfair.variable} ${poppins.variable} font-sans overflow-x-hidden min-w-dvw min-h-svh`}
       >
         <ColorThemeProvider attribute="class">
-          <Header />
+          {/* <Header /> */}
+          <></>
           {children}
         </ColorThemeProvider>
       </body>
