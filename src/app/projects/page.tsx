@@ -1,7 +1,7 @@
 "use client";
 import "./page.css";
 
-import { useEffect, useState } from "react";
+import { WheelEventHandler, useEffect, useState } from "react";
 import { useViewportHooks } from "../hooks/viewport-hooks";
 import { Observer } from "gsap/all";
 
@@ -24,17 +24,17 @@ const projectGallerySlides: ProjectGallerySlide[] = [
     image: "/portfolio_self.jpg",
   },
   {
-    title: "EFC",
+    title: "EFC - Electron File Converter",
     description: `
     An FFMPEG-based media file converter made with Electron.js.
     This project was designed as a user-friendly and resource-efficient alternative to Handbrake, a popular FFMPEG media converter.
     It's completely open-source, and uses JS instead of React to be as lightweight as possible.
     `,
-    skills: ["Electron.js", "HTML5", "CSS"],
+    skills: ["Electron.js", "JavaScript", "Bootstrap", "HTML5", "CSS"],
     image: "/efc.jpg",
   },
   {
-    title: "CBS",
+    title: "CBS - Create Batch Script",
     description: `
     A batch/bash script creation tool made to increase accessibility in making terminal-level programs.
     Easily create terminal scripts, completely written in english.
@@ -98,6 +98,7 @@ export default function Projects() {
               transition: "opacity 2s ease",
             }}
             className="w-full h-full flex items-center justify-center fixed top-0"
+            onWheelCapture={handleDismissed}
           >
             <div className="flex flex-col justify-start items-center gap-4 text-center">
               <h2 className="section-heading">WELCOME TO MY PROJECTS</h2>
@@ -105,20 +106,19 @@ export default function Projects() {
                 <p>This is an interactive gallery</p>
                 <p> You can view all of my projects simply by scrolling</p>
               </span>
-              <button
-                className="p-4 border-2 rounded-lg"
-                onClick={handleDismissed}
-              >
-                {" "}
-                Click me to get started{" "}
-              </button>
+              <h1>Try scrolling to start</h1>
             </div>
           </div>
         </>
       ) : (
         <>
-          {projectGallerySlides.map((slide) => (
-            <ProjectSection slide={slide} useGrad={true} />
+          {projectGallerySlides.map((slide, index) => (
+            <ProjectSection
+              key={index}
+              slide={slide}
+              useGrad={true}
+              index={index}
+            />
           ))}
         </>
       )}
@@ -129,9 +129,59 @@ export default function Projects() {
 interface ProjectSectionProps {
   slide: ProjectGallerySlide;
   useGrad?: boolean;
+  index: number;
 }
 
-const ProjectSection: React.FC<ProjectSectionProps> = ({ slide, useGrad }) => {
+const ProjectSection: React.FC<ProjectSectionProps> = ({
+  slide,
+  useGrad,
+  index,
+}) => {
+  const { transition, transitionFromTo } = useViewportHooks();
+  const [detailsActive, setDetailsActive] = useState(false);
+
+  const handleDetailsActive = () => {
+    setDetailsActive(!detailsActive);
+  };
+
+  useEffect(() => {
+    if (detailsActive) {
+      transition(`transitionable-container-${index}`, {
+        opacity: "1",
+        duration: .2,
+        ease: "power1.inOut",
+      });
+      transition(`transitionable-font-${index}`, {
+        opacity: "1",
+        duration: 1,
+        ease: "power1.inOut",
+        delay: 1,
+      });
+      transition(`transitionable-blur-${index}`, {
+        opacity: "1",
+        duration: 1,
+        ease: "power1.in",
+      });
+    } else {
+      transition(`transitionable-font-${index}`, {
+        opacity: "0",
+        duration: 1,
+        ease: "power1.inOut",
+      });
+      transition(`transitionable-blur-${index}`, {
+        opacity: "0",
+        duration: 1,
+        delay: .3,
+        ease: "power1.in",
+      });
+      transition(`transitionable-container-${index}`, {
+        opacity: "0",
+        duration: 0.2,
+        ease: "power1.inOut",
+      });
+    }
+  }, [detailsActive]);
+
   return (
     <section className={`proj-section ${slide.title} font-poppins`}>
       <div className="outer">
@@ -151,23 +201,46 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ slide, useGrad }) => {
                   className="w-max h-max max-w-full max-h-full bg-contain bg-no-repeat bg-center shadow-2xl"
                 />
               </div>
+              <div
+                className={`transitionable-blur-${index} opacity-0 absolute w-full h-full pointer-events-none backdrop-filter backdrop-blur-[12px]`}
+              />
+              <div className="absolute top-14 right-1/2 translate-x-1/2 px-12 py-4 backdrop-blur-md rounded-lg shadow-2xl bg-black/40">
+                <h2 className="clamp-width-medium font-bold text-center">
+                  {slide.title}
+                </h2>
+              </div>
             </div>
-
-            <div className="w-full h-full pointer-events-none backdrop-filter backdrop-blur-[1px]" />
-            <div className="absolute max-w-lg w-full z-30 bottom-0 right-1/2 sm:top-6 sm:right-6 sm:translate-x-0 lg:right-10 lg:top-10 translate-x-1/2 flex flex-col gap-4 h-max backdrop-filter backdrop-blur-md bg-white/40 p-5 rounded-lg shadow-2xl">
-              <h2 className="clamp-width-small font-bold border-b-4 text-center">
-                {slide.title}
-              </h2>
-              <span className="w-full flex gap-8">
-                <div className="w-1/2">
-                  {slide.skills.map((skill) => (
-                    <p className="clamp-width-default">{skill}</p>
-                  ))}
+            <div className="transition-all duration-[1000ms] ease-in absolute max-w-lg w-full z-30 bottom-8 right-1/2 translate-x-1/2 flex flex-col items-center gap-4">
+              <h1
+                onClick={handleDetailsActive}
+                className=" cursor-pointer border-2 p-2"
+              >
+                {detailsActive ? "Hide details" : "Show details"}
+              </h1>
+              <div
+                style={{
+                  maxHeight: detailsActive ? "100dvh" : "0dvh",
+                  backgroundColor: detailsActive
+                    ? "rgba(0, 0, 0, 0.4)"
+                    : "transparent",
+                }}
+                className={`transitionable-container-${index} transition-all p-5 duration-[1000ms] ease-in w-full h-max max-h-0 backdrop-filter backdrop-blur-md shadow-2xl rounded-lg overflow-hidden`}
+              >
+                <div
+                  className={`w-full transitionable-font-${index} flex flex-col gap-4`}
+                >
+                  <div className="flex flex-col gap-2">
+                    <h1 className="underline">Skills:</h1>
+                    <div className="flex flex-wrap gap-4 items-center w-full mb-4">
+                      {slide.skills.map((skill, index) => (
+                        <h1 key={index} className={`p-2 border-2`}>{skill}</h1>
+                      ))}
+                    </div>
+                    <h1 className="underline">Description:</h1>
+                    <h1>{slide.description}</h1>
+                  </div>
                 </div>
-                <div className="w-1/2 clamp-width-xsmall">
-                  {slide.description}
-                </div>
-              </span>
+              </div>
             </div>
           </div>
         </div>
@@ -175,3 +248,21 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({ slide, useGrad }) => {
     </section>
   );
 };
+
+/*
+
+                  <div className="w-max">
+                    {slide.skills.map((skill) => (
+                      <p
+                        className={`clamp-width-default transitionable-font-${index}`}
+                      >
+                        {skill}
+                      </p>
+                    ))}
+                  </div>
+                  <div
+                    className={`w-1/2 clamp-width-xsmall transitionable-font-${index}`}
+                  >
+                    {slide.description}
+                  </div>
+*/

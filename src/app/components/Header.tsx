@@ -8,10 +8,8 @@ import { MdDarkMode } from "react-icons/md";
 import TooltipButton from "./TooltipButton";
 import { useTheme } from "next-themes";
 import { useViewportHooks } from "../hooks/viewport-hooks";
-import { useEffect } from "react";
 
 const Header = () => {
-  const { fadeIntoPage } = useViewportHooks();
   const { resolvedTheme, setTheme } = useTheme();
 
   const toggleLightMode = () => {

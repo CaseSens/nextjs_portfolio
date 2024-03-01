@@ -187,6 +187,22 @@ export const useViewportHooks = () => {
     return observer;
   };
 
+  const transition = (forClass: string, vars: gsap.TweenVars) => {
+    const elems = document.querySelectorAll(`.${forClass}`);
+
+    gsap.to(elems, vars);
+  };
+
+  const transitionFromTo = (
+    forClass: string,
+    fromVars: gsap.TweenVars,
+    toVars: gsap.TweenVars
+  ) => {
+    const elems = document.querySelectorAll(`.${forClass}`);
+
+    gsap.fromTo(elems, fromVars, toVars);
+  };
+
   return {
     scrollToElement,
     scrollToElementX,
@@ -197,6 +213,8 @@ export const useViewportHooks = () => {
     fadeIntoPage,
     getColorMode,
     applyObserver,
+    transition,
+    transitionFromTo,
   };
 };
 
