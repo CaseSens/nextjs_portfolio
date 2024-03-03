@@ -91,7 +91,6 @@ export default function Projects() {
   };
 
   const handleTouchDown: React.TouchEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
     const touch = e.touches[0];
     setPointerLocation({
       x: touch.clientX,
@@ -99,12 +98,7 @@ export default function Projects() {
     });
   };
 
-  const handleTouchMove: React.TouchEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
-  };
-
   const handleTouchUp: React.TouchEventHandler<HTMLDivElement> = (e) => {
-    e.preventDefault();
     const touch = e.changedTouches[0]; // Use changedTouches for touchEnd
 
     // If within an acceptable x range of a swipe, using 40 as default
@@ -116,7 +110,7 @@ export default function Projects() {
   };
 
   return (
-    <main className="relative w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins overflow-hidden">
+    <main className="relative w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins overflow-hidden overscroll-none">
       {!introDismissed ? (
         <div
           style={{
@@ -125,7 +119,6 @@ export default function Projects() {
           }}
           onWheelCapture={handleDismissed}
           onTouchStart={handleTouchDown}
-          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchUp}
           className="w-full h-full"
         >
@@ -203,16 +196,9 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
     }
   }, [detailsActive]);
 
-  const preventMobileDefaultGestures: React.TouchEventHandler<
-    HTMLDivElement
-  > = (e) => {
-    e.preventDefault();
-  };
-
   return (
     <section
       className={`proj-section ${slide.title} font-poppins`}
-      onTouchMove={preventMobileDefaultGestures}
     >
       <div className="outer">
         <div className="inner">
