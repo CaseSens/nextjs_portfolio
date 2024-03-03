@@ -90,7 +90,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="overscroll-contain">
       <body
         className={`${inter.className} ${rubik.variable} ${playfair.variable} ${poppins.variable} font-sans overflow-x-hidden`}
       >
