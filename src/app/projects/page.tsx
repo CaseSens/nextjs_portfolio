@@ -1,9 +1,18 @@
 "use client";
 import "./page.css";
 
-import { WheelEventHandler, useEffect, useState } from "react";
+import {
+  PointerEventHandler,
+  TouchEventHandler,
+  WheelEventHandler,
+  memo,
+  useEffect,
+  useState,
+} from "react";
 import { useViewportHooks } from "../hooks/viewport-hooks";
 import { Observer } from "gsap/all";
+import { TSParticles } from "../components/Particles";
+import { IntroScreen } from "./IntroScreen";
 
 type ProjectGallerySlide = {
   title: string;
@@ -54,11 +63,20 @@ const projectGallerySlides: ProjectGallerySlide[] = [
   },
 ];
 
+type PointerLocation = {
+  x: number;
+  y: number;
+};
+
 export default function Projects() {
   const { applyObserver } = useViewportHooks();
   const TRANSITION_DELAY = 2000;
-  const [introDismissed, setIntroDismissed] = useState(true);
+  const [introDismissed, setIntroDismissed] = useState(false);
   const [hasAlpha, setHasAlpha] = useState(true);
+  const [pointerLocation, setPointerLocation] = useState<PointerLocation>({
+    x: 0,
+    y: 0,
+  });
   let introTimeout: ReturnType<typeof setTimeout> | null;
 
   useEffect(() => {
@@ -80,36 +98,40 @@ export default function Projects() {
     }, TRANSITION_DELAY);
   };
 
+  const handleTouchDown: React.TouchEventHandler<HTMLDivElement> = (e) => {
+    const touch = e.touches[0];
+    setPointerLocation({
+      x: touch.clientX,
+      y: touch.clientY,
+    });
+  };
+
+  const handleTouchUp: React.TouchEventHandler<HTMLDivElement> = (e) => {
+    const touch = e.changedTouches[0]; // Use changedTouches for touchEnd
+
+    // If within an acceptable x range of a swipe, using 40 as default
+    if (Math.abs(touch.clientX - pointerLocation.x) <= 40) {
+      if (Math.abs(touch.clientY - pointerLocation.y) >= 40) {
+        handleDismissed();
+      }
+    }
+  };
+
   return (
-    <main className="relative w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins">
+    <main className="relative w-dvw h-dvh bg-bluestone text-textcream m-0 p-0 font-poppins overflow-hidden">
       {!introDismissed ? (
-        <>
-          <img
-            style={{
-              opacity: hasAlpha ? "100" : "0",
-              transition: "opacity 2s ease",
-            }}
-            src="/flat-mountains_org.svg"
-            className="absolute w-full h-full"
-          />
-          <div
-            style={{
-              opacity: hasAlpha ? "100" : "0",
-              transition: "opacity 2s ease",
-            }}
-            className="w-full h-full flex items-center justify-center fixed top-0"
-            onWheelCapture={handleDismissed}
-          >
-            <div className="flex flex-col justify-start items-center gap-4 text-center">
-              <h2 className="section-heading">WELCOME TO MY PROJECTS</h2>
-              <span>
-                <p>This is an interactive gallery</p>
-                <p> You can view all of my projects simply by scrolling</p>
-              </span>
-              <h1>Try scrolling to start</h1>
-            </div>
-          </div>
-        </>
+        <div
+          style={{
+            opacity: hasAlpha ? "100" : "0",
+            transition: "opacity 2s ease",
+          }}
+          onWheelCapture={handleDismissed}
+          onTouchStart={handleTouchDown}
+          onTouchEnd={handleTouchUp}
+          className="w-full h-full"
+        >
+          <IntroScreen />
+        </div>
       ) : (
         <>
           {projectGallerySlides.map((slide, index) => (
@@ -159,7 +181,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
       });
       transition(`transitionable-blur-${index}`, {
         opacity: "1",
-        duration: 1,
+        duration: 0.8,
         ease: "power1.in",
       });
     } else {
@@ -171,7 +193,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
       transition(`transitionable-blur-${index}`, {
         opacity: "0",
         duration: 1,
-        delay: 0.3,
+        // delay: 0.3,
         ease: "power1.in",
       });
       transition(`transitionable-container-${index}`, {
@@ -194,12 +216,13 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
             >
               <div
                 id="fg-image-container"
+                style={{ backgroundImage: `url('${slide.image}')` }}
                 className="absolute z-20 flex items-center justify-center bg-clip-border w-full h-full bg-contain bg-no-repeat bg-center backdrop-filter backdrop-blur-lg rounded-lg xl:invisible"
               >
-                <img
+                {/* <img
                   src={slide.image}
-                  className="w-max h-max max-w-full max-h-full bg-contain bg-no-repeat bg-center shadow-2xl"
-                />
+                  className="w-max h-max max-w-full max-h-full shadow-2xl"
+                /> */}
               </div>
             </div>
             <div

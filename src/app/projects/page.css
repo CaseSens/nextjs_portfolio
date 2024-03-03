@@ -44,3 +44,9 @@ h2 * {
   letter-spacing: 0.3em;
   color: hsl(0, 0, 80%);
 }
+
+#fg-image-container {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
