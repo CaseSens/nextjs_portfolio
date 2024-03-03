@@ -151,7 +151,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   useGrad,
   index,
 }) => {
-  const { transition, transitionFromTo } = useViewportHooks();
+  const { transition } = useViewportHooks();
   const [detailsActive, setDetailsActive] = useState(false);
 
   const handleDetailsActive = () => {
@@ -167,25 +167,25 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
       });
       transition(`transitionable-font-${index}`, {
         opacity: "1",
-        duration: 1,
+        duration: 0.5,
         ease: "power1.inOut",
         delay: 1,
       });
       transition(`transitionable-blur-${index}`, {
         opacity: "1",
-        duration: 0.8,
+        duration: 0.3,
         ease: "power1.in",
       });
     } else {
       transition(`transitionable-font-${index}`, {
         opacity: "0",
-        duration: 1,
-        ease: "power1.inOut",
+        duration: 0.6,
+        ease: "power1.out",
       });
       transition(`transitionable-blur-${index}`, {
         opacity: "0",
-        duration: 1,
-        // delay: 0.3,
+        duration: 0.3,
+        delay: 0.7,
         ease: "power1.in",
       });
       transition(`transitionable-container-${index}`, {
@@ -197,9 +197,7 @@ const ProjectSection: React.FC<ProjectSectionProps> = ({
   }, [detailsActive]);
 
   return (
-    <section
-      className={`proj-section ${slide.title} font-poppins`}
-    >
+    <section className={`proj-section ${slide.title} font-poppins`}>
       <div className="outer">
         <div className="inner">
           <div className="bg">
