@@ -2,16 +2,11 @@
 import "./page.css";
 
 import {
-  PointerEventHandler,
-  TouchEventHandler,
-  WheelEventHandler,
-  memo,
   useEffect,
   useState,
 } from "react";
 import { useViewportHooks } from "../hooks/viewport-hooks";
 import { Observer } from "gsap/all";
-import { TSParticles } from "../components/Particles";
 import { IntroScreen } from "./IntroScreen";
 
 type ProjectGallerySlide = {
