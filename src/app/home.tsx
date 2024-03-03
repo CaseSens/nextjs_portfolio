@@ -3,6 +3,7 @@
 import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import IntroButton from "./components/IntroButton";
 import WavesBackground from "./components/WavesBackground";
+import Link from "next/link";
 
 export default function Home() {
   const { scrollToElement } = useViewportHooks();
@@ -35,7 +36,9 @@ export default function Home() {
             </div>
             <div className="flex items-center justify-end gap-4 md:gap-6 w-full mt-8 mb-8">
               <IntroButton text="About me" onClick={handleAboutClick} />
-              <IntroButton text="View Projects" onClick={handleAboutClick} />
+              <Link href="/projects">
+                <IntroButton text="View Projects" onClick={handleAboutClick} />
+              </Link>
             </div>
           </div>
           <p className="font-light text-left clamp-width-small">
