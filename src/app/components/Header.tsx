@@ -5,9 +5,9 @@ import { FaBoxArchive } from "react-icons/fa6";
 import { FaInfoCircle } from "react-icons/fa";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
+import { FaBloggerB } from "react-icons/fa";
 import TooltipButton from "./TooltipButton";
 import { useTheme } from "next-themes";
-import { useViewportHooks } from "../hooks/viewport-hooks";
 
 const Header = () => {
   const { resolvedTheme, setTheme } = useTheme();
@@ -33,9 +33,8 @@ const Header = () => {
         link="/projects"
       />
       <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" />
-      <h1
-        className="transition duration-[2000ms] fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none "
-      >
+      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" />
+      <h1 className="transition duration-[2000ms] fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none ">
         *Website under construction*
       </h1>
     </div>
