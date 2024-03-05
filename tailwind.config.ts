@@ -20,7 +20,7 @@ const config: Config = {
         hotpink: "#c62368",
         lightgreen: "#6CF199",
 
-        bluestone: "#0E0B09",
+        bluestone: "#2b253e",
         primbeige: "#C3BBB5",
 
         textcream: "#F1EFEE",

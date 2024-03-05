@@ -4,6 +4,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Header from "./components/Header";
 import { ColorThemeProvider } from "./providers/ColorThemeProvider";
+import InfoCard from "./components/InfoCard";
+import { AppProvider } from "./providers/AppContext";
 
 const inter = Inter({ subsets: ["latin"] });
 const rubik = localFont({
@@ -95,8 +97,12 @@ export default function RootLayout({
         className={`${inter.className} ${rubik.variable} ${playfair.variable} ${poppins.variable} font-sans overflow-x-hidden`}
       >
         <ColorThemeProvider attribute="class">
-          <Header />
-          {children}
+          <AppProvider>
+            <Header />
+            <InfoCard className="fixed right-1/2 translate-x-1/2 top-0 z-50 max-w-xs flex flex-col items-center justify-center w-full h-full sm:max-w-sm" />
+
+            {children}
+          </AppProvider>
         </ColorThemeProvider>
       </body>
     </html>

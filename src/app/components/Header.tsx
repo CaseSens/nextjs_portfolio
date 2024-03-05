@@ -8,9 +8,11 @@ import { MdDarkMode } from "react-icons/md";
 import { FaBloggerB } from "react-icons/fa";
 import TooltipButton from "./TooltipButton";
 import { useTheme } from "next-themes";
+import useAppContext from "../hooks/app-hooks";
 
 const Header = () => {
   const { resolvedTheme, setTheme } = useTheme();
+  const { toggleInfoOpened } = useAppContext();
 
   const toggleLightMode = () => {
     const currentTheme = resolvedTheme;
@@ -18,7 +20,7 @@ const Header = () => {
   };
 
   return (
-    <div className="header box-border fixed flex flex-col gap-2 justify-start w-full top-0 p-4 z-20 pointer-events-none">
+    <div className="header box-border fixed flex flex-col gap-2 justify-start w-full top-0 p-4 z-50 pointer-events-none">
       <TooltipButton
         Icon={resolvedTheme === "dark" ? MdLightMode : MdDarkMode}
         tooltipText={
@@ -32,8 +34,8 @@ const Header = () => {
         tooltipText="Projects"
         link="/projects"
       />
-      <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" />
-      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" />
+      <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" onClick={toggleInfoOpened}/>
+      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" link="/blog"/>
       <h1 className="transition duration-[2000ms] fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none ">
         *Website under construction*
       </h1>

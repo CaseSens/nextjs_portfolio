@@ -5,7 +5,7 @@ import { ThemeProviderProps } from "next-themes/dist/types";
 import { ReactNode, useEffect, useState } from "react";
 
 interface ColorThemeProviderProps extends ThemeProviderProps {
-  children: ReactNode[];
+  children: React.ReactNode;
 }
 
 export function ColorThemeProvider({
