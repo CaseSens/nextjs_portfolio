@@ -34,11 +34,12 @@ const Header = () => {
         tooltipText="Projects"
         link="/projects"
       />
-      <TooltipButton Icon={FaInfoCircle} tooltipText="Contact Info" onClick={toggleInfoOpened}/>
-      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" link="/blog"/>
-      <h1 className="transition duration-[2000ms] fixed clamp-width-small left-1/2 top-1 translate-x-[-50%] text-[black] dark:text-white select-none ">
-        *Website under construction*
-      </h1>
+      <TooltipButton
+        Icon={FaInfoCircle}
+        tooltipText="Contact Info"
+        onClick={toggleInfoOpened}
+      />
+      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" link="/blog" />
     </div>
   );
 };

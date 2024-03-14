@@ -15,6 +15,15 @@ type ProjectGallerySlide = {
 
 const projectGallerySlides: ProjectGallerySlide[] = [
   {
+    title: "Nuance.js",
+    description: `
+    Nuance.js is an ultra-fast, ultra-lightweight JS/TS utility library that handles
+    all the annoying boilerplate, designed to get your project started faster, and look cleaner.
+    `,
+    skills: ["JavaScript", "TypeScript", "Node.js", "NPM"],
+    image: "/nuancejs.jpg",
+  },
+  {
     title: "This very portfolio!",
     description: `
     That's right! this portfolio itself is a showcase project!
@@ -43,15 +52,6 @@ const projectGallerySlides: ProjectGallerySlide[] = [
     `,
     skills: ["Java", "Swing"],
     image: "/cbs.jpg",
-  },
-  {
-    title: "Fractal Creation Simulator",
-    description: `
-    A simplistic tool for creating square-shaped fractals using collisions and trails.
-
-    `,
-    skills: ["Javascript", "HTML5", "CSS", "HTMLCanvas"],
-    image: "/frac_create.jpg",
   },
 ];
 

@@ -4,6 +4,9 @@ import { useViewportHooks } from "@/app/hooks/viewport-hooks";
 import { IoIosArrowDown } from "react-icons/io";
 import SkillsWidget from "./components/SkillsWidget";
 import ImageGallery from "./components/ImageGallery";
+import IntroButton from "./components/IntroButton";
+import Link from "next/link";
+import LayeredPeaks from "./components/LayeredPeaks";
 
 function About() {
   const { scrollToElement } = useViewportHooks();
@@ -51,15 +54,14 @@ function About() {
               Casey Goosney Gareau
             </h1>
             <p className="clamp-width-xsmall text-balance my-2 max-h-[96px] md:max-h-full overflow-y-auto">
-              Hi, I'm a 24-year-old full-stack developer who lives and breathes
-              programming, music, and visual arts. Coding is more than just a
-              job for me—it's a passion that drives me to constantly work on
-              personal projects, whether that's building cool web apps or diving
-              into my creative side with music and art. I strive in tackling new
-              challenges and learning something new with each project I take on.
-              It's this mix of tech and creativity that always keeps me on my
-              toes and my days interesting. I'm looking forward to what I can
-              create next.
+              Hi, I'm a full-stack developer who lives and breathes programming,
+              music, and visual arts. Coding is more than just a job for me,
+              it's a passion that drives me to constantly work on personal
+              projects, whether that's building cool web apps or new software. I
+              strive in tackling new challenges and learning something new with
+              each project I take on. It's this mix of tech and creativity that
+              always keeps me on my toes and my days interesting. I'm looking
+              forward to what I can create next.
             </p>
           </div>
           <img
@@ -81,40 +83,55 @@ function About() {
           containerId={"dev1Container"}
           widgetId={"dev1Widget"}
           title="FULL-STACK"
-          childrenText={["Computer Applications", "Web Development"]}
+          childrenText={[
+            "Computer Applications",
+            "Web Development",
+            "REST API development",
+            "Mobile Application Development",
+          ]}
         />
         <SkillsWidget
-          containerId={"dev2Container"}
-          widgetId={"dev2Widget"}
-          title="FRONT-END"
-          childrenText={["HTML5", "CSS3", "JavaScript", "TypeScript", "Swing"]}
-        />
-        <SkillsWidget
-          containerId={"dev3Container"}
-          widgetId={"dev3Widget"}
-          title="BACK-END"
-          childrenText={["API Building", "Node.js", "Express.js", "JEST"]}
+          containerId="dev2Container"
+          widgetId="dev2Widget"
+          title="LANGUAGES"
+          childrenText={[
+            "React",
+            "Tailwind",
+            "HTML5",
+            "CSS",
+            "JavaScript",
+            "TypeScript",
+            "Swing",
+            "SwiftUI",
+            "Node.js",
+            "Express.js",
+            "JEST",
+            "Supertest",
+          ]}
+          hasSubWidgets={true}
         />
         <IoIosArrowDown
           onClick={handleScrollToDevGallery}
           color="white"
           style={{
             left: "50%",
-            bottom: "-8%",
+            bottom: "-16%",
             transform: "translate(-50%, 0)",
           }}
           className="absolute size-12 p-2 rounded-md hover:bg-white/[.2] cursor-pointer"
         />
       </div>
-      <div className="col-start-2 w-full h-full my-[400px] rounded-xl">
-        <ImageGallery id="devGallery" />
+      <Link
+        id="devGallery"
+        href={"/projects"}
+        className="col-start-2 z-50 mb-32 sm:mb-48 md:mb-64 lg:mb-80 2xl:mb-[468px]"
+      >
+        <IntroButton text="View Projects" />
+      </Link>
+
+      <div className="absolute col-span-3 z-10 w-full h-max bottom-0 left-0 mt-32">
+        <LayeredPeaks className="drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]" />
       </div>
-      <img
-        src="/layered_peaks.svg"
-        style={{ position: "absolute" }} //sometimes cloudflare breaks when absolute on tailwind
-        className="z-10 w-full bottom-0 left-0 object-cover drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]"
-        alt="bubble"
-      />
     </div>
   );
 }

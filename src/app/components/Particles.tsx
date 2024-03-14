@@ -80,7 +80,7 @@ const TSParticles: React.FC<TSParticlesProps> = ({ ...divProps }) => {
             default: "out",
           },
           random: false,
-          speed: 0.1,
+          speed: 0.15,
           straight: true,
         },
         number: {
