@@ -39,7 +39,7 @@ const Header = () => {
         tooltipText="Contact Info"
         onClick={toggleInfoOpened}
       />
-      <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" link="/blog" />
+      {/* <TooltipButton Icon={FaBloggerB} tooltipText="My Blog" link="/blog" /> */}
     </div>
   );
 };
