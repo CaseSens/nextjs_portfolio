@@ -5,7 +5,7 @@ import { FaBoxArchive } from "react-icons/fa6";
 import { FaInfoCircle } from "react-icons/fa";
 import { MdLightMode } from "react-icons/md";
 import { MdDarkMode } from "react-icons/md";
-import { FaBloggerB } from "react-icons/fa";
+import { RiPagesFill } from "react-icons/ri";
 import TooltipButton from "./TooltipButton";
 import { useTheme } from "next-themes";
 import useAppContext from "../hooks/app-hooks";
@@ -33,6 +33,11 @@ const Header = () => {
         Icon={FaBoxArchive}
         tooltipText="Projects"
         link="/projects"
+      />
+      <TooltipButton
+        Icon={RiPagesFill}
+        tooltipText="Portfolio"
+        link="/portfolio"
       />
       <TooltipButton
         Icon={FaInfoCircle}

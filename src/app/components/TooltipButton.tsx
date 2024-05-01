@@ -48,14 +48,6 @@ const TooltipButton: React.FC<TooltipButtonProps> = ({
     return () => clearTimeout(visibilityTimer);
   }, []);
 
-  /*
-      {...divProps}
-      className={classNames(
-        "relative w-full h-[60vh] flex flex-col rounded-xl",
-        className
-      )}
-  */
-
   return (
     <div
       {...divProps}
