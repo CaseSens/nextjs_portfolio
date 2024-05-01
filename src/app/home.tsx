@@ -16,9 +16,9 @@ export default function Home() {
   return (
     <div
       id="home"
-      className="transition-colors duration-[2000ms] z-0 bg-transparent h-screen grid grid-cols-page-padding-cols-sm place-items-center justify-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full text-black dark:text-white font-rubik font-bold text-center shrink-0 select-none"
+      className="relative transition-colors duration-[2000ms] z-0 bg-transparent h-screen grid grid-cols-page-padding-cols-sm place-items-center justify-items-center p-6 md:px-8 lg:px-12 xl:px-16 w-full text-black dark:text-white font-rubik font-bold text-center shrink-0 select-none"
     >
-      <WavesBackground className="absolute inset-0 object-cover h-full w-full max-h-f z-[1] overflow-hidden" />
+      <WavesBackground className="absolute bottom-0 object-cover w-screen max-h-full z-[1] overflow-hidden" />
       <div className="col-start-2 col-end-2 w-full z-30 inset-0 flex items-center justify-center">
         <div className="box-border flex flex-col gap-12 items-center w-full bg-white/[.2] md:py-12 rounded-lg backdrop-filter backdrop-blur-md shadow-2xl px-4 sm:px-8 md:px-12 py-4">
           <div className="flex flex-col leading-tight md:leading-none">
